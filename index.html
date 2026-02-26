@@ -433,11 +433,78 @@
     }
 
     /* ─── Responsive ─── */
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
+
+      /* ── Nav ── */
       nav ul { display: none; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .project-item { grid-template-columns: 40px 1fr; }
+      #burger { display: block; }
+
+      #nav-menu {
+        display: none;
+        position: fixed; top: 57px; left: 0; right: 0;
+        background: var(--bg);
+        flex-direction: column; align-items: center;
+        gap: 0; padding: 1rem 0;
+        border-bottom: 1px solid var(--line);
+        z-index: 99;
+      }
+      #nav-menu.open { display: flex; }
+      #nav-menu li { width: 100%; text-align: center; }
+      #nav-menu li a { display: block; padding: 0.8rem 0; font-size: 0.85rem; }
+
+      /* ── Curseur ── */
+      .cursor { display: none; }
+      body { cursor: auto; }
+
+      /* ── Hero ── */
+      #hero { display: flex; flex-direction: column; justify-content: center; }
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-photo {
+        width: 100%; height: 260px;
+        order: -1; /* photo au dessus du texte */
+        border-radius: 4px;
+      }
+      h1 { font-size: clamp(2.5rem, 11vw, 4rem); }
+      .big-bg { display: none; }
+      .hero-scroll { display: none; }
+      .hero-meta { flex-direction: column; gap: 0.4rem; }
+
+      /* ── Sections ── */
+      section { padding: 4rem 1.5rem 3rem; min-height: auto; }
+      h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin-bottom: 2rem; }
+
+      /* ── Compétences ── */
+      .skills-grid { grid-template-columns: 1fr; }
+
+      /* ── Langues ── */
+      .lang-grid { grid-template-columns: 1fr 1fr; }
+      .lang-flag { margin-left: 0; font-size: 2rem; }
+
+      /* ── Projets ── */
+      .project-item { grid-template-columns: 40px 1fr; gap: 1rem; padding: 1.2rem 0; }
+      .proj-thumb { display: none; }
       .proj-arrow { display: none; }
+      .proj-title { font-size: 1.1rem; }
+
+      /* ── Expérience ── */
+      .xp-item { grid-template-columns: 1fr; gap: 0.3rem; }
+      .xp-erasmus { grid-template-columns: 1fr; padding-left: 1rem; }
+      .xp-date { font-size: 0.75rem; }
+      .xp-role { font-size: 1.2rem; }
+
+      /* ── CV ── */
+      .cv-block { grid-template-columns: 1fr; gap: 1.5rem; }
+
+      /* ── Contact ── */
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-email { font-size: 1.1rem; }
+
+      /* ── Modales ── */
+      .modal-inner { padding: 1.5rem; width: 95%; }
+      .carousel-slide img { height: 220px; }
+
+      /* ── Footer ── */
+      footer { flex-direction: column; gap: 0.3rem; text-align: center; }
     }
 
     /* ── Modales ── */
