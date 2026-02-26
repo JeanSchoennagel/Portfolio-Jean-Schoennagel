@@ -55,7 +55,7 @@
 
     .logo {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       letter-spacing: 0.01em;
     }
 
@@ -82,7 +82,7 @@
     }
 
     /* ─── Hero ─── */
-    #hero { position: relative; overflow: hidden; }
+    #hero { position: relative; overflow: hidden; display: block; }
 
     .hero-label {
       font-size: 0.8rem;
@@ -94,9 +94,40 @@
       animation: fadeUp 0.8s 0.2s forwards;
     }
 
+    /* ── Photo hero ── */
+      .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 3rem;
+      align-items: center;
+      min-height: 80vh; 
+    }
+    .hero-photo {
+      width: 280px; height: 320px;
+      object-fit: cover; object-position: center;
+      /*filter: grayscale(20%);*/
+      transition: filter 0.3s;
+    }
+    /*.hero-photo:hover { filter: grayscale(0%); }*/
+     /*.hero-photo {
+      border-radius: 4px 40% 4px 40% / 40% 4px 40% 4px;
+      box-shadow: 6px 6px 0px var(--accent);
+      filter: grayscale(15%);
+      transition: border-radius 0.5s ease, filter 0.3s, box-shadow 0.3s;
+    }*/
+    /*blob*/
+    .hero-photo {
+      border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+      transition: border-radius 0.6s ease, filter 0.3s;
+    }
+    /*portrait simple*/
+    /*.hero-photo {
+      border-radius: 12px;
+    }*/
+
     h1 {
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(3.5rem, 9vw, 9rem);
+      font-size: clamp(2.5rem, 8vw, 8rem);
       line-height: 0.95;
       letter-spacing: -0.02em;
       opacity: 0;
@@ -134,12 +165,15 @@
       font-family: 'DM Serif Display', serif;
       font-size: clamp(80px, 15vw, 240px);
       color: var(--bg);
-      -webkit-text-stroke: 3px #c8401a70; 
+      -webkit-text-stroke: 3px #c8401aa5; 
       /*pointer-events: none;
       user-select: none;*/
       line-height: 1;
     }
-        /*.big-bg:hover {color: var(--accent);}*/
+      .big-bg:hover {
+        color: var(--accent);
+        -webkit-text-stroke: 0px; 
+      }
 
     /* ─── Section titles ─── */
     .section-num {
@@ -266,19 +300,42 @@
 
     /* CV BLOCK */
     .cv-block {
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;
-      padding: 3rem; background: var(--ink); color: var(--bg);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 4rem;
+      padding: 3rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
-    .cv-block-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
-    .cv-block-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.4rem, 3vw, 2.2rem); line-height: 1.1; }
+    .cv-block-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .cv-block-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      line-height: 1;
+    }
+    .cv-block-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
     .cv-dl-btn {
       display: inline-flex; align-items: center; gap: 0.8rem;
-      padding: 1rem 2rem; border: 1px solid rgba(253,246,239,0.3);
-      color: var(--bg); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-      transition: background .2s, border-color .2s; white-space: nowrap;
+      padding: 0.8rem 1.6rem;
+      border: 1px solid var(--line);
+      color: var(--muted); font-family: 'DM Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s, gap 0.2s;
+      white-space: nowrap;
     }
-    .cv-dl-btn:hover { background: rgba(253,246,239,0.08); border-color: var(--bg); }
-    .cv-dl-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+    .cv-dl-btn:hover { color: var(--accent); border-color: var(--accent); gap: 1.2rem; }
+    .cv-dl-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
 
     /* ── Expérience ── */
     .xp-item {
@@ -295,7 +352,7 @@
     .xp-company { font-size: 1rem; color: var(--muted); margin-bottom: 0.6rem; white-space: nowrap; }
     .xp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
     .xp-tag { font-size: 0.8rem; color: var(--muted); border: 1px solid var(--line); padding: 0.15rem 0.6rem; }
-    .xp-erasmus {display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding-left: 5rem;}
+    .xp-erasmus {display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding-left: 5rem; border-top: 1px solid var(--line); }
 
     /* ─── Contact ─── */
     .contact-grid {
@@ -368,6 +425,32 @@
       .project-item { grid-template-columns: 40px 1fr; }
       .proj-arrow { display: none; }
     }
+
+    /* ── Modales ── */
+    .modal {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(26,23,20,0.88); backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+    }
+    .modal.open { display: flex; }
+    .modal-inner {
+      position: relative; max-width: 760px; width: 90%;
+      background: var(--bg); padding: 2.5rem;
+    }
+    .modal-close {
+      position: absolute; top: -2.2rem; right: 0;
+      background: none; border: none; color: var(--bg);
+      font-family: 'DM Mono', monospace; font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase; cursor: none;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--accent); }
+    .modal-num { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .modal-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 0.5rem; }
+    .modal-tags { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1.5rem; }
+    .modal-media { width: 100%; display: block; }
+    .modal-desc { font-size: 0.82rem; color: var(--muted); margin-top: 1.2rem; line-height: 1.8; }
+
   </style>
 </head>
 <body>
@@ -380,42 +463,40 @@
     <ul>
       <li><a href="#competences">Compétences</a></li>
       <li><a href="#langues">Langues</a></li>
-    <li><a href="#projets">Projets</a></li>
+      <li><a href="#projets">Projets</a></li>
       <li><a href="#engagements">Engagements</a></li>
       <li><a href="#experience">Expériences</a></li>
+      <li><a href="#cv">Curriculum Vitæ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
-  <section id="hero">
-    <p class="hero-label">Développeur · Designer · Créateur web</p>
-    <h1>Gestion de projets<br>web <em>multilingues.</em></h1>
-    <p class="hero-sub">Diplômé d'une Licence d'Anglais et actuellement en Master Communication Web Multilingue à l'Université de Strasbourg. Je conçois et développe des expériences numériques humaines et adaptées.</p>
-    <div class="big-bg">PORTFOLIO</div>
-  </section>
+    <!-- Hero -->
+    <section id="hero">
+      <div class="hero-layout">
+        <div>
+          <p class="hero-label">Communicant multilingue · Designer · Créateur web</p>
+          <h1>Gestion de projets<br>web <em>multilingues.</em></h1>
+          <p class="hero-sub">Diplômé d'une Licence d'Anglais et actuellement en Master Communication Web Multilingue à l'Université de Strasbourg. Je conçois et développe des expériences numériques humaines et adaptées.</p>
+        </div>
+        <img src="moi.jpg" alt="Jean Schoennagel" class="hero-photo" alt="photo de jean schoennagel">
+      </div>
+      <a href="#projets"><div class="big-bg">PORTFOLIO</div></a>
+    </section>
 
   <!-- Compétences -->
   <section id="competences">
     <p class="section-num">01 — Compétences</p>
     <h2>Ce que<br>je maîtrise.</h2>
     <div class="skills-grid">
-      <div class="skill-item">
-        <h3>Languages de programmation</h3>
-        <p>HTML, CSS, JavaScript, PHP</p>
-      </div>
-      <div class="skill-item">
-        <h3>Localisation multilingue</h3>
-        <p>Adaptation de contenu à un marché culturel cible</p>
-      </div>
-
+      <div class="skill-item"><h3>Communication Web</h3><p>Stratégie digitale, marketing des reseaux, veille de marché</p></div>
+      <div class="skill-item"><h3>Languages de programmation</h3><p>HTML, CSS, JavaScript, PHP</p></div>
+      <div class="skill-item"><h3>Localisation multilingue</h3><p>Adaptation de contenu à un marché culturel cible</p></div>
       <div class="skill-item"><h3>CMS — WordPress</h3><p>Système de gestion de contenu, administration, personnalisation</p></div>
       <div class="skill-item"><h3>Ergonomie UX / UI</h3><p>Expérience utilisateur, interface utilisateur </p></div>
       <div class="skill-item"><h3>Suite Adobe</h3><p>Photoshop, Indesign, Illustrator</p></div>
       <div class="skill-item"><h3>Design graphique</h3><p>Figma, Affinity, Canva</p></div>
       <div class="skill-item"><h3>Referencement SEO</h3><p>Optimisation moteurs de recherche</p></div>
-      <div class="skill-item"><h3>Communication Web</h3><p>Stratégie digitale, marketing des reseaux, veille de marché</p></div>
-
     </div>
     </section>
 
@@ -479,39 +560,79 @@
     </div>
   </section>
 
-  <!-- Projets -->
-  <section id="projets">
-    <p class="section-num">03 — Projets</p>
-    <h2>Travaux<br>récents.</h2>
-    <div class="projects-list">
+<!-- Projets -->
+<section id="projets">
+  <p class="section-num">03 — Projets</p>
+  <h2>Travaux<br>récents.</h2>
+    <p class="section-num">n'hésitez-pas à cliquer sur les projets</p>
+  <div class="projects-list">
 
-      <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" class="project-item">
-        <span class="proj-num">001</span>
-        <div>
-          <div class="proj-title">Refonte du Café Bretelles</div>
-          <div class="proj-tags">Ergonomie . Design . Wordpress . Localisation · 2026</div>
-        </div>
-        <span class="proj-arrow">↗</span>
-      </a>
+    <div class="project-item" onclick="openModal('modal-001')">
+      <span class="proj-num">001</span>
+      <div>
+        <div class="proj-title">Refonte du Café Bretelles</div>
+        <div class="proj-tags">Ergonomie . Design . Wordpress . Localisation · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
 
-      <a href="#" target="_blank" rel="noopener" class="project-item">
-        <span class="proj-num">002</span>
-        <div>
-          <div class="proj-title">Friperie Solidaire</div>
-          <div class="proj-tags">Secours Populaire · Benevolat · Evenementiel 2026</div>
-        </div>
-        <span class="proj-arrow">↗</span>
-      </a>
+    <div class="project-item" onclick="openModal('modal-002')">
+      <span class="proj-num">002</span>
+      <div>
+        <div class="proj-title">Friperie Solidaire</div>
+        <div class="proj-tags">Secours Populaire · Bénévolat · Événementiel · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
 
-      <a href="#" target="_blank" rel="noopener" class="project-item">
-        <span class="proj-num">003</span>
-        <div>
-          <div class="proj-title">Caweb brunch avec Tino</div>
-          <div class="proj-tags">ADECAWEB · Seminaire design · Evenementiel · 2026</div>
-        </div>
-        <span class="proj-arrow">↗</span>
-      </a>
-    </section>
+    <div class="project-item" onclick="openModal('modal-003')">
+      <span class="proj-num">003</span>
+      <div>
+        <div class="proj-title">Caweb brunch avec Tino</div>
+        <div class="proj-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODALES -->
+<div id="modal-001" class="modal" onclick="closeOnBackdrop(event, 'modal-001')">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal('modal-001')">Fermer ✕</button>
+    <div class="modal-num">001</div>
+    <div class="modal-title">Refonte du Café Bretelles</div>
+    <div class="modal-tags">Ergonomie · Design · WordPress · Localisation · 2026</div>
+    <img src="maquette-cafe-bretelelles.mov" alt="video maquette site web" class="modal-media">
+      <p class="modal-desc">Refonte complète du site web du Café Bretelles à Strasbourg : ergonomie, design, intégration CMS WordPress et localisation multilingue.</p>
+    <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+  </div>
+</div>
+
+<div id="modal-002" class="modal" onclick="closeOnBackdrop(event, 'modal-002')">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal('modal-002')">Fermer ✕</button>
+    <div class="modal-num">002</div>
+    <div class="modal-title">Friperie Solidaire</div>
+    <div class="modal-tags">Secours Populaire · Bénévolat · Événementiel · 2026</div>
+    <img src="Friperie.jpg" class="modal-media" alt="Friperie Solidaire"> 
+    <p class="modal-desc">Organisation d'une friperie solidaire dans le cadre du bénévolat au Secours Populaire Français, section 67 de Strasbourg.</p>
+    <a href="https://theopro.unistra.fr/actualites/actualite/friperie-solidaire-du-secours-populaire-20-fevrier-au-studium" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+  </div>
+</div>
+
+<div id="modal-003" class="modal" onclick="closeOnBackdrop(event, 'modal-003')">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal('modal-003')">Fermer ✕</button>
+    <div class="modal-num">003</div>
+    <div class="modal-title">Caweb brunch avec Tino</div>
+    <div class="modal-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
+    <img src="brunch.heic" class="modal-media" alt="Caweb brunch"> 
+    <p class="modal-desc">Événement organisé par le bureau des élèves ADECAWEB : brunch et séminaire design en collaboration avec Tino.</p>
+      <a href="https://www.linkedin.com/posts/association-adecaweb_adecaweb-caweb-graphisme-activity-7427060040815001600-8j4R?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+  </div>
+</div>
 
     <!-- ENGAGEMENTS -->
 
@@ -666,27 +787,23 @@
         </div>
       </div>
     </div>
-  </section>
-
+    </section>
+  
   <!-- CV -->
-  <!--
-  <section id="cv">
-    <p class="label">Curriculum Vitæ</p>
-    <h2>Mon CV</h2>
-    <div class="cv-block fade">
-      <div class="cv-block-left">
-        <div class="cv-block-label">Téléchargement</div>
-        <div class="cv-block-title">Jean Schoennagel<br>Étudiant en Communication Web</div>
+    <section id="cv">
+      <p class="section-num">06 — Curriculum Vitæ</p>
+      <h2>Mon CV<br>complet.</h2>
+      <div class="cv-block">
+        <div>
+          <div class="cv-block-label">Disponible en téléchargement</div>
+          <div class="cv-block-title">Jean Schoennagel<br><em>Communication Web.</em></div>
+        </div>
+        <a href="Jean_SCHOENNAGEL_CV.pdf" download class="cv-dl-btn">
+          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Télécharger le CV
+        </a>
       </div>
-      <a href="Jean_SCHOENNAGEL_CV.pdf" download class="cv-dl-btn">
-        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-        Télécharger le CV (PDF)
-      </a>
-    </div>
-  </section>
-  -->
-
-  </section>
+    </section>
 
   <!-- Contact -->
   <section id="contact">
@@ -787,6 +904,23 @@
       });
     }, { threshold: 0.3 });
     document.querySelectorAll('#langues').forEach(el => barObs.observe(el));
+
+    // Modales
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+    function closeOnBackdrop(e, id) {
+      if (e.target === document.getElementById(id)) closeModal(id);
+    }
+    // Fermer avec Échap
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
+      }
+    });
   </script>
 </body>
 </html>
