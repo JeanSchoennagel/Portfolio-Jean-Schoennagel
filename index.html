@@ -431,24 +431,24 @@
     }
 
     /* ─── Responsive & mobile friendly ─── */
-    @media (max-width: 768px) {
-      /* ── Nav ── */
-      nav { padding: 10px 1.5rem; }
-      nav ul { display: none; }
-      .logo { font-size: 0.85rem; }
-      #burger { display: block; }
-      #nav-menu {
-        display: none;
-        position: fixed; top: 44px; left: 0; right: 0;
-        background: var(--bg);
-        flex-direction: column; align-items: center;
-        gap: 0; padding: 1rem 0;
-        border-bottom: 1px solid var(--line);
-        z-index: 99;
-      }
-      #nav-menu.open { display: flex; }
-      #nav-menu li { width: 100%; text-align: center; }
-      #nav-menu li a { display: block; padding: 0.8rem 0; font-size: 0.82rem; }
+      @media (max-width: 768px) {
+        /* ── Nav ── */
+        nav { padding: 10px 1.5rem; }
+        nav ul { display: none; }
+        .logo { font-size: 0.85rem; }
+        #burger { display: block; }
+        #nav-menu {
+          display: none;
+          position: fixed; top: 44px; left: 0; right: 0;
+          background: var(--bg);
+          flex-direction: column; align-items: center;
+          gap: 0; padding: 1rem 0;
+          border-bottom: 1px solid var(--line);
+          z-index: 99;
+        }
+        #nav-menu.open { display: flex; }
+        #nav-menu li { width: 100%; text-align: center; }
+        #nav-menu li a { display: block; padding: 0.8rem 0; font-size: 0.82rem; }
 
         /* ── Anti-overflow global ── */
         body { overflow-x: hidden; cursor: auto; }
@@ -494,12 +494,14 @@
           font-size: 0.65rem;
           letter-spacing: 0.08em;
           word-break: break-word;
+          margin-bottom: 1.5rem;
         }
         .hero-sub {
           text-align: center;
           font-size: 0.82rem;
           max-width: 100%;
           margin-top: 1rem;
+          margin-bottom: 0.6rem;
         }
         .hero-meta {
           justify-content: center;
@@ -510,7 +512,7 @@
         }
 
         /* ── Compétences ── */
-        .skills-grid { grid-template-columns: 1fr; }
+        .skills-grid { grid-template-columns: 1fr 1fr;  }
         .skill-item h3 { font-size: 0.95rem; }
         .skill-item p { font-size: 0.78rem; }
 
