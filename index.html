@@ -13,7 +13,7 @@
   <!-- Open Graph aperçu & partage-->
   <meta property="og:title" content="Jean Schoennagel — Communication Web Multilingue">
   <meta property="og:description" content="Étudiant en Master CAWEB à Strasbourg, spécialisé en communication web, localisation et UX/UI.">
-  <meta property="og:image" content="https://jeanschoennagel.github.io/Portfolio-Jean-Schoennagel/images/jean.jpg">
+  <meta property="og:image" content="<meta property="og:image" content="https://jeanschoennagel.github.io/Portfolio-Jean-Schoennagel/moi.jpg">
   <meta property="og:url" content="https://jeanschoennagel.github.io/Portfolio-Jean-Schoennagel/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
@@ -99,7 +99,7 @@
     }
 
     /* ─── Hero ─── */
-    #hero { position: relative; overflow: hidden; display: block; }
+    #hero { min-height: 100vh; position: relative; overflow: hidden; display: block; margin-bottom: 2rem; }
 
     .hero-label {
       font-size: 0.8rem;
@@ -746,8 +746,17 @@
     <div class="project-item" onclick="openModal('modal-003')">
       <span class="proj-num">003</span>
       <div>
-        <div class="proj-title">Caweb brunch avec Tino</div>
+        <div class="proj-title">Caweb brunch</div>
         <div class="proj-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+
+    <div class="project-item" onclick="openModal('modal-004')">
+      <span class="proj-num">004</span>
+      <div>
+        <div class="proj-title">Projection d'un film avec l'AMIders</div>
+        <div class="proj-tags">AMIders · Design Graphique · Creation d'affiche · 2026</div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -784,11 +793,22 @@
   <div class="modal-inner">
     <button class="modal-close" onclick="closeModal('modal-003')">Fermer ✕</button>
     <div class="modal-num">003</div>
-    <div class="modal-title">Caweb brunch avec Tino</div>
+    <div class="modal-title">Caweb brunch</div>
     <div class="modal-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
-    <img src="./brunch.heic" class="modal-media" alt="Caweb brunch"> 
-    <p class="modal-desc">Événement organisé par le bureau des élèves ADECAWEB : brunch et séminaire design en collaboration avec Tino.</p>
+    <img src="./brunch.jpg" class="modal-media" alt="Caweb brunch"> 
+    <p class="modal-desc">Événement organisé par le bureau des élèves ADECAWEB : brunch et séminaire en collaboration avec le designer Tino de Tinoland.</p>
       <a href="https://www.linkedin.com/posts/association-adecaweb_adecaweb-caweb-graphisme-activity-7427060040815001600-8j4R?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+  </div>
+</div>
+
+<div id="modal-004" class="modal" onclick="closeOnBackdrop(event, 'modal-004')">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="closeModal('modal-004')">Fermer ✕</button>
+    <div class="modal-num">004</div>
+    <div class="modal-title">Projection d'un film avec l'AMIders</div>
+    <div class="modal-tags">AMIders · Design Graphique · Creation d'affiche · 2026</div>
+    <img src="./filantropica.jpg" class="modal-media" alt="Projection d'un film en Roumain"> 
+    <p class="modal-desc">Projection du film Filantropica organisé par l'AMIders : création et design de l'affiche de l'évenement.</p>
   </div>
 </div>
 
@@ -826,7 +846,7 @@
     <h2>Parcours<br>professionnel.</h2>
 
     <div class="xp-item">
-      <div class="xp-date">11/2025 — 06/2026<span class="xp-loc">Strasbourg</span></div>
+      <div class="xp-date">11/2025 . 06/2026<span class="xp-loc">Strasbourg</span></div>
       <div>
         <div class="xp-role">Refonte de Site Web — Stage</div>
         <div class="xp-company">Café Bretelles</div>
@@ -838,7 +858,7 @@
     </div>
 
     <div class="xp-item">
-      <div class="xp-date">09/2024 — 11/2024<span class="xp-loc">Strasbourg</span></div>
+      <div class="xp-date">09/2024 . 11/2024<span class="xp-loc">Strasbourg</span></div>
       <div>
         <div class="xp-role">Serveur en Restauration</div>
         <div class="xp-company">In Vino Veritas</div>
