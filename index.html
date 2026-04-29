@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jean Schoennagel — Communication Web Multilingue · Strasbourg</title>
+  <title>Jean Schoennagel — Communication Web Multilingue</title>
   <!--Referencement titre & description-->
   <meta name="description" content="Portfolio de Jean Schoennagel, étudiant en Master Communication Web Multilingue à Strasbourg. Compétences en HTML/CSS, WordPress, UX/UI, SEO et web design.">
   <!--inutile <meta name="keywords" content="communication web, multilingue, Strasbourg, UX UI, WordPress, SEO, alternance, CAWEB">-->
@@ -12,7 +12,7 @@
   <meta name="google-site-verification" content="efRsSWlJZ9-4APe_z2FKiSM_4PLDzoi2lWoUbcoRDR0" />
   <!-- Open Graph aperçu & partage-->
   <meta property="og:title" content="Jean Schoennagel — Communication Web Multilingue">
-  <meta property="og:description" content="Étudiant en Master CAWEB à Strasbourg, spécialisé en communication web, localisation et UX/UI.">
+  <meta property="og:description" content="Étudiant en Master CAWEB à Strasbourg, spécialisé en communication web multilingue.">
   <meta property="og:image" content="<meta property="og:image" content="https://jeanschoennagel.github.io/Portfolio-Jean-Schoennagel/moi.jpg">
   <meta property="og:url" content="https://jeanschoennagel.github.io/Portfolio-Jean-Schoennagel/">
   <meta property="og:type" content="website">
@@ -606,7 +606,7 @@
     .modal-num { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
     .modal-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 0.5rem; }
     .modal-tags { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1.5rem; }
-    .modal-media { width: 100%; display: block; }
+    .modal-media { width: 100%; display: block; max-height: 420px; object-fit: contain;}
     .modal-desc { font-size: 0.82rem; color: var(--muted); margin-top: 1.2rem; line-height: 1.8; }
 
   </style>
@@ -619,9 +619,9 @@
   <nav>
     <span class="logo">Jean Schoennagel</span>
     <ul>
+      <li><a href="#projets">Projets</a></li>
       <li><a href="#competences">Compétences</a></li>
       <li><a href="#langues">Langues</a></li>
-      <li><a href="#projets">Projets</a></li>
       <li><a href="#engagements">Engagements</a></li>
       <li><a href="#experience">Expériences</a></li>
       <li><a href="#cv">Curriculum Vitæ</a></li>
@@ -642,9 +642,149 @@
       <a href="#projets"><div class="big-bg">PORTFOLIO</div></a>
     </section>
 
+<!-- PROJETS -->
+<section id="projets">
+  <p class="section-num">01 — Projets</p>
+  <h2>Travaux<br>récents.</h2>
+    <p class="section-num">n'hésitez-pas à cliquer sur les projets</p>
+  <div class="projects-list">
+
+    <div class="project-item" onclick="openModal('modal-001')">
+      <span class="proj-num">001</span>
+      <div>
+        <div class="proj-title">Refonte du Café Bretelles</div>
+        <div class="proj-tags">Ergonomie . Design . Wordpress . Localisation · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+
+   <div class="project-item" onclick="openModal('modal-002')">
+      <span class="proj-num">002</span>
+      <div>
+        <div class="proj-title">Projet personnel : publicité Elsass Cola</div>
+        <div class="proj-tags">Communication digitale . Design . Stratégie vidéo · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+
+    <div class="project-item" onclick="openModal('modal-003')">
+      <span class="proj-num">003</span>
+      <div>
+        <div class="proj-title">Friperie Solidaire</div>
+        <div class="proj-tags">Secours Populaire · Bénévolat · Événementiel · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+
+    <div class="project-item" onclick="openModal('modal-004')">
+      <span class="proj-num">004</span>
+      <div>
+        <div class="proj-title">Caweb brunch</div>
+        <div class="proj-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+
+    <!--<div class="project-item" onclick="openModal('modal-004')">
+      <span class="proj-num">004</span>
+      <div>
+        <div class="proj-title">Projection d'un film avec l'AMIders</div>
+        <div class="proj-tags">AMIders · Design Graphique · Creation d'affiche · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>-->
+
+    <div class="project-item" onclick="openModal('modal-005')">
+      <span class="proj-num">005</span>
+      <div>
+        <div class="proj-title">Communication de l'app Trok</div>
+        <div class="proj-tags">TROK · Communication digitale · Création de contenu · Stratégie vidéo · 2026</div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+
+  </div>
+</section>
+
+  <!-- MODALES -->
+  <div id="modal-001" class="modal" onclick="closeOnBackdrop(event, 'modal-001')">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal('modal-001')">Fermer ✕</button>
+      <div class="modal-num">001</div>
+      <div class="modal-title">Refonte du Café Bretelles</div>
+      <div class="modal-tags">Ergonomie · Design · WordPress · Localisation · 2026</div>
+      <video controls class="modal-media" playsinline><source src="./maquette-cafe-bretelelles.mp4" type="video/mp4"></video>
+        <p class="modal-desc">Refonte du site web du Café Bretelles à Strasbourg : dans le cadre duquel j'ai pu travaillé sur des enjeux d'ergonomie UX, design web, intégration CMS WordPress et localisation multilingue.</p>
+      <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+    </div>
+  </div>
+
+  <div id="modal-002" class="modal" onclick="closeOnBackdrop(event, 'modal-002')">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal('modal-002')">Fermer ✕</button>
+      <div class="modal-num">002</div>
+      <div class="modal-title">Publicité Elsass Cola</div>
+      <div class="modal-tags">Communication . Design . Stratégie marketing · 2026</div>
+      <img src="./Studio_A67.pdf" class="modal-media" alt="Publicité Elsass Cola"> 
+      <p class="modal-desc">Travail personnel sur la présentation d'une strategie vidéo pour Elsass Cola incluant des enjeux de marketing digital & de création de contenu.</p>
+        <a href="Strategie_Elsass_Cola.pdf" download class="cv-dl-btn">
+          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Télécharger la presentation 
+        </a>
+      <a href=""↗</a>
+    </div>
+  </div>
+
+  <div id="modal-003" class="modal" onclick="closeOnBackdrop(event, 'modal-003')">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal('modal-003')">Fermer ✕</button>
+      <div class="modal-num">003</div>
+      <div class="modal-title">Friperie Solidaire</div>
+      <div class="modal-tags">Secours Populaire · Bénévolat · Événementiel · 2026</div>
+      <img src="./friperie-solidaire.jpg" class="modal-media" alt="Friperie Solidaire"> 
+      <p class="modal-desc">Organisation d'une friperie solidaire pour étudiants dans le cadre du bénévolat au Secours Populaire Français, section 67 de Strasbourg.</p>
+      <a href="https://theopro.unistra.fr/actualites/actualite/friperie-solidaire-du-secours-populaire-20-fevrier-au-studium" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+    </div>
+  </div>
+
+  <div id="modal-004" class="modal" onclick="closeOnBackdrop(event, 'modal-004')">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal('modal-004')">Fermer ✕</button>
+      <div class="modal-num">004</div>
+      <div class="modal-title">Caweb brunch</div>
+      <div class="modal-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
+      <img src="./caweb_brunch.jpeg" class="modal-media" alt="Caweb brunch"> 
+      <p class="modal-desc">Événement organisé par le bureau des élèves ADECAWEB : brunch et séminaire en collaboration avec des professionnels du monde de l'UX design & du graphisme.</p>
+      <a href="https://www.linkedin.com/posts/association-adecaweb_adecaweb-caweb-graphisme-activity-7427060040815001600-8j4R?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+    </div>
+  </div>
+
+  <!--<div id="modal-004" class="modal" onclick="closeOnBackdrop(event, 'modal-004')">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal('modal-004')">Fermer ✕</button>
+      <div class="modal-num">004</div>
+      <div class="modal-title">Projection d'un film avec l'AMIders</div>
+      <div class="modal-tags">AMIders · Design Graphique · Creation d'affiche · 2026</div>
+      <img src="./filantropica.jpg" class="modal-media" alt="Projection d'un film en Roumain"> 
+      <p class="modal-desc">Projection du film Filantropica organisé par l'AMIders : création et design de l'affiche de l'évenement.</p>
+    </div>
+  </div>-->
+
+  <div id="modal-005" class="modal" onclick="closeOnBackdrop(event, 'modal-005')">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal('modal-005')">Fermer ✕</button>
+      <div class="modal-num">005</div>
+      <div class="modal-title">Communication digitale Trok</div>
+      <div class="modal-tags">TROK · Communication digitale · Création de contenu · Stratégie vidéo · 2026</div>
+      <img src="./trok.jpg" class="modal-media" alt="Communication de l'App TROK"> 
+      <p class="modal-desc">Création de contenu vidéo pour les reseaux de l'app Trok & élaboration d'une stratégie digitale</p>
+      <a href="https://trok-app.com" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+    </div>
+  </div>
+
   <!-- Compétences -->
   <section id="competences">
-    <p class="section-num">01 — Compétences</p>
+    <p class="section-num">02 — Compétences</p>
     <h2>Ce que<br>je maîtrise.</h2>
     <div class="skills-grid">
       <div class="skill-item"><h3>Communication Web</h3><p>Stratégie digitale, marketing des réseaux, veille de marché</p></div>
@@ -679,7 +819,7 @@
     
     <!-- LANGUES -->
   <section id="langues">
-    <p class= "section-num"> 02 - Langues</p>
+    <p class= "section-num"> 03 - Langues</p>
     <h2>Un atout<br><em>multilingue.</em></h2>
     <div class="lang-grid">
 
@@ -717,100 +857,6 @@
 
     </div>
   </section>
-
-<!-- Projets -->
-<section id="projets">
-  <p class="section-num">03 — Projets</p>
-  <h2>Travaux<br>récents.</h2>
-    <p class="section-num">n'hésitez-pas à cliquer sur les projets</p>
-  <div class="projects-list">
-
-    <div class="project-item" onclick="openModal('modal-001')">
-      <span class="proj-num">001</span>
-      <div>
-        <div class="proj-title">Refonte du Café Bretelles</div>
-        <div class="proj-tags">Ergonomie . Design . Wordpress . Localisation · 2026</div>
-      </div>
-      <span class="proj-arrow">↗</span>
-    </div>
-
-    <div class="project-item" onclick="openModal('modal-002')">
-      <span class="proj-num">002</span>
-      <div>
-        <div class="proj-title">Friperie Solidaire</div>
-        <div class="proj-tags">Secours Populaire · Bénévolat · Événementiel · 2026</div>
-      </div>
-      <span class="proj-arrow">↗</span>
-    </div>
-
-    <div class="project-item" onclick="openModal('modal-003')">
-      <span class="proj-num">003</span>
-      <div>
-        <div class="proj-title">Caweb brunch</div>
-        <div class="proj-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
-      </div>
-      <span class="proj-arrow">↗</span>
-    </div>
-
-    <div class="project-item" onclick="openModal('modal-004')">
-      <span class="proj-num">004</span>
-      <div>
-        <div class="proj-title">Projection d'un film avec l'AMIders</div>
-        <div class="proj-tags">AMIders · Design Graphique · Creation d'affiche · 2026</div>
-      </div>
-      <span class="proj-arrow">↗</span>
-    </div>
-
-  </div>
-</section>
-
-<!-- MODALES -->
-<div id="modal-001" class="modal" onclick="closeOnBackdrop(event, 'modal-001')">
-  <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal('modal-001')">Fermer ✕</button>
-    <div class="modal-num">001</div>
-    <div class="modal-title">Refonte du Café Bretelles</div>
-    <div class="modal-tags">Ergonomie · Design · WordPress · Localisation · 2026</div>
-    <video controls class="modal-media" playsinline><source src="./maquette-cafe-bretelelles.mp4" type="video/mp4"></video>
-      <p class="modal-desc">Refonte complète du site web du Café Bretelles à Strasbourg : ergonomie, design, intégration CMS WordPress et localisation multilingue.</p>
-    <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
-  </div>
-</div>
-
-<div id="modal-002" class="modal" onclick="closeOnBackdrop(event, 'modal-002')">
-  <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal('modal-002')">Fermer ✕</button>
-    <div class="modal-num">002</div>
-    <div class="modal-title">Friperie Solidaire</div>
-    <div class="modal-tags">Secours Populaire · Bénévolat · Événementiel · 2026</div>
-    <img src="./Friperie.jpg" class="modal-media" alt="Friperie Solidaire"> 
-    <p class="modal-desc">Organisation d'une friperie solidaire dans le cadre du bénévolat au Secours Populaire Français, section 67 de Strasbourg.</p>
-    <a href="https://theopro.unistra.fr/actualites/actualite/friperie-solidaire-du-secours-populaire-20-fevrier-au-studium" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
-  </div>
-</div>
-
-<div id="modal-003" class="modal" onclick="closeOnBackdrop(event, 'modal-003')">
-  <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal('modal-003')">Fermer ✕</button>
-    <div class="modal-num">003</div>
-    <div class="modal-title">Caweb brunch</div>
-    <div class="modal-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
-    <img src="./brunch.jpg" class="modal-media" alt="Caweb brunch"> 
-    <p class="modal-desc">Événement organisé par le bureau des élèves ADECAWEB : brunch et séminaire en collaboration avec le designer Tino de Tinoland.</p>
-      <a href="https://www.linkedin.com/posts/association-adecaweb_adecaweb-caweb-graphisme-activity-7427060040815001600-8j4R?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
-  </div>
-</div>
-
-<div id="modal-004" class="modal" onclick="closeOnBackdrop(event, 'modal-004')">
-  <div class="modal-inner">
-    <button class="modal-close" onclick="closeModal('modal-004')">Fermer ✕</button>
-    <div class="modal-num">004</div>
-    <div class="modal-title">Projection d'un film avec l'AMIders</div>
-    <div class="modal-tags">AMIders · Design Graphique · Creation d'affiche · 2026</div>
-    <img src="./filantropica.jpg" class="modal-media" alt="Projection d'un film en Roumain"> 
-    <p class="modal-desc">Projection du film Filantropica organisé par l'AMIders : création et design de l'affiche de l'évenement.</p>
-  </div>
-</div>
 
     <!-- ENGAGEMENTS -->
 
