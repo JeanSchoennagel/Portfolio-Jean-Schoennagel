@@ -6,7 +6,7 @@
   <title>Jean Schoennagel — Communication Web Multilingue</title>
   <!--Referencement titre & description-->
   <meta name="description" content="Portfolio de Jean Schoennagel, étudiant en Master Communication Web Multilingue à Strasbourg. Compétences en HTML/CSS, WordPress, UX/UI, SEO et web design.">
-  <!--inutile <meta name="keywords" content="communication web, multilingue, Strasbourg, UX UI, WordPress, SEO, alternance, CAWEB">-->
+  <!--INUTILE <meta name="keywords" content="communication web, multilingue, Strasbourg, UX UI, WordPress, SEO, alternance, CAWEB">-->
   <meta name="author" content="Jean Schoennagel">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="efRsSWlJZ9-4APe_z2FKiSM_4PLDzoi2lWoUbcoRDR0" />
@@ -21,6 +21,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <!--favicon-->>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -72,7 +77,7 @@
 
     .logo {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       letter-spacing: 0.01em;
     }
 
@@ -83,7 +88,7 @@
     nav a {
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       transition: color 0.2s;
@@ -99,10 +104,10 @@
     }
 
     /* ─── Hero ─── */
-    #hero { min-height: 100vh; position: relative; overflow: hidden; display: block; margin-bottom: 2rem; }
+    #hero { min-height: 100vh; position: relative; overflow: hidden; display: block; margin-bottom: 2rem; padding-top: 60px; }
 
     .hero-label {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--muted);
@@ -152,12 +157,13 @@
     }
 
     .hero-sub {
+      font-size: 1.1rem; 
       max-width: 55ch;
       margin-top: 2.5rem;
       color: var(--muted);
       opacity: 0;
       animation: fadeUp 0.9s 0.7s forwards;
-    margin-bottom: 2rem;
+      margin-bottom: 4rem;
     }
 
     .hero-scroll {
@@ -189,7 +195,7 @@
 
     /* ─── Section titles ─── */
     .section-num {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       letter-spacing: 0.15em;
       color: var(--accent);
       text-transform: uppercase;
@@ -221,20 +227,20 @@
       font-size: 1.3rem;
       margin-bottom: 0.8rem;
     }
-    .skill-item p { font-size: 0.8rem; color: var(--muted); }
-    .skill-item:hover p { color: rgba(245,242,236,0.6); }
+    .skill-item p { font-size: 1rem; color: var(--accent); }
+    .skill-item:hover p { color: var(--bg); }
 
     /* LANGUES */
     .lang-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; background: var(--line); }
     .lang-card { background: var(--bg); padding: 2.5rem 2rem; }
-    .lang-flag { font-size: 3.2rem; margin-bottom: 1rem; display: block; margin-left: 110px; }
-    .lang-name { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin-bottom: 0.2rem; }
+    .lang-flag { font-size: 3.6rem; margin-bottom: 1rem; display: block; margin-left: 110px; }
+    .lang-name { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 0.2rem; }
         .lang-name:hover { color: var(--accent); gap: 1.5rem; }
-    .lang-level { font-size: 0.9rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
+    .lang-level { font-size: 0.95rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
         /*.lang-level:hover { color: var(--accent); gap: 1.5rem; padding-left: 1rem; }*/
     .lang-bar-track { height: 2px; background: var(--line); }
     .lang-bar-fill { height: 2px; background: var(--accent); width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
-    .lang-note { font-size: 0.8rem; color: var(--muted); margin-top: 0.7rem; }
+    .lang-note { font-size: 0.95rem; color: var(--muted); margin-top: 0.7rem; }
         /*.lang-note:hover { gap: 1.5rem; padding-left: 1rem; }*/
 
     /* ─── Projets ─── */
@@ -256,7 +262,7 @@
     .project-item:hover .proj-num { color: var(--accent); }
 
     .proj-num {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       color: var(--muted);
       transition: color 0.3s;
     }
@@ -264,7 +270,23 @@
       font-family: 'DM Serif Display', serif;
       font-size: clamp(1.2rem, 2.5vw, 2rem);
     }
-    .proj-tags { font-size: 0.9rem; color: var(--muted); letter-spacing: 0.08em; }
+
+    .proj-tags {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .proj-tags span {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(200, 64, 26, 0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+
     .proj-arrow { font-size: 1.8rem; color: var(--muted); transition: transform 0.3s; }
     .project-item:hover .proj-arrow { transform: translate(4px, -4px); color: var(--accent); }
 
@@ -274,7 +296,7 @@
     .engage-item {
       display: flex; align-items: center; gap: 1.2rem;
       padding: 1.2rem 0; border-bottom: 1px solid var(--line);
-      font-size: 0.88rem;
+      font-size: 1rem;
     }
     .engage-item:hover {gap: 1.5rem;}
     .skill-comp {
@@ -288,6 +310,7 @@
 
     .skill-ist {
         color: var(--muted);
+        font-size: 1rem;
     }
 
     .link {
@@ -321,7 +344,7 @@
       border-bottom: 1px solid var(--line);
     }
     .cv-block-label {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
@@ -341,7 +364,7 @@
       padding: 0.8rem 1.6rem;
       border: 1px solid var(--line);
       color: var(--muted); font-family: 'DM Mono', monospace;
-      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase;
       text-decoration: none;
       transition: color 0.2s, border-color 0.2s, gap 0.2s;
       white-space: nowrap;
@@ -357,14 +380,14 @@
     }
     .xp-item:first-child { border-top: 1px solid var(--line); }
             .xp-item:hover { padding-left: 0.8rem; }
-    .xp-date { font-size: 0.9rem; color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
+    .xp-date { font-size: 1rem; color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
     .xp-loc { font-size: 0.8rem; color: var(--accent); display: block; margin-top: 0.2rem; letter-spacing: 0.08em; text-transform: uppercase; }
     .xp-role { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin-bottom: 0.15rem; }
         .xp-role:hover {color: var(--accent);}
     .xp-company { font-size: 1rem; color: var(--muted); margin-bottom: 0.6rem; white-space: nowrap; }
     .xp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-    .xp-tag { font-size: 0.8rem; color: var(--muted); border: 1px solid var(--line); padding: 0.15rem 0.6rem; }
-    .xp-erasmus {display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding-left: 5rem; border-top: 1px solid var(--line); }
+    .xp-tag { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: rgba(200, 64, 26, 0.1); border: none;  padding: 0.3rem 0.8rem; border-radius: 20px;}
+    .xp-erasmus { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding-left: 5rem; border-top: 1px solid var(--line); }
 
     /* ─── Contact ─── */
     .contact-grid {
@@ -373,7 +396,7 @@
       gap: 4rem;
       align-items: start;
     }
-    .contact-desc { color: var(--muted); max-width: 36ch; }
+    .contact-desc { color: var(--muted); max-width: 36ch; font-size: 1rem; }
     .contact-email {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(1.5rem, 3vw, 2.5rem);
@@ -386,6 +409,7 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .contact-email:hover { color: var(--ink); border-color: var(--ink); }
+    .orange { color: var(--accent); max-width: 36ch; font-size: 1rem; }
 
     .social-links { display: flex; flex-direction: column; gap: 1rem; }
     .social-link {
@@ -394,7 +418,7 @@
       gap: 1rem;
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       letter-spacing: 0.08em;
       padding: 0.75rem 0;
       border-bottom: 1px solid var(--line);
@@ -415,7 +439,7 @@
     footer {
       padding: 2rem var(--gap);
       display: flex; justify-content: space-between;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       color: var(--muted);
       letter-spacing: 0.08em;
     }
@@ -514,7 +538,7 @@
         /* ── Compétences ── */
         .skills-grid { grid-template-columns: 1fr 1fr;  }
         .skill-item h3 { font-size: 0.95rem; }
-        .skill-item p { font-size: 0.78rem; }
+        .skill-item p { font-size: 0.95rem; }
 
         /* ── Langues ── */
         .lang-grid {
@@ -574,7 +598,7 @@
         .social-link { font-size: 0.75rem; }
 
         /* ── Modales ── */
-        .modal-inner { padding: 1.5rem; width: 95%; }
+        .modal-inner { max-height: 100vh; padding: 1.5rem; width: 95%; }
         .modal-title { font-size: 1.2rem; }
         .modal-tags { font-size: 0.68rem; }
         .modal-desc { font-size: 0.75rem; }
@@ -592,22 +616,22 @@
     }
     .modal.open { display: flex; }
     .modal-inner {
-      position: relative; max-width: 760px; width: 90%;
+      position: relative; max-width: 760px; width: 90%; max-height: 100vh; overflow-y: auto; 
       background: var(--bg); padding: 2.5rem;
     }
     .modal-close {
       position: absolute; top: -2.2rem; right: 0;
       background: none; border: none; color: var(--bg);
-      font-family: 'DM Mono', monospace; font-size: 0.72rem;
+      font-family: 'DM Mono', monospace; font-size: 0.82rem;
       letter-spacing: 0.12em; text-transform: uppercase; cursor: none;
       transition: color 0.2s;
     }
     .modal-close:hover { color: var(--accent); }
-    .modal-num { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .modal-num { font-size: 0.9rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
     .modal-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 0.5rem; }
-    .modal-tags { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1.5rem; }
+    .modal-tags { font-size: 0.9rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1.5rem; }
     .modal-media { width: 100%; display: block; max-height: 420px; object-fit: contain;}
-    .modal-desc { font-size: 0.82rem; color: var(--muted); margin-top: 1.2rem; line-height: 1.8; }
+    .modal-desc { font-size: 0.92rem; color: var(--muted); margin-top: 1.2rem; line-height: 1.8; }
 
   </style>
 </head>
@@ -652,8 +676,8 @@
     <div class="project-item" onclick="openModal('modal-001')">
       <span class="proj-num">001</span>
       <div>
-        <div class="proj-title">Refonte du Café Bretelles</div>
-        <div class="proj-tags">Ergonomie . Design . Wordpress . Localisation · 2026</div>
+        <div class="proj-title">Refonte du site web du  Café Bretelles</div>
+        <div class="proj-tags"><span>Ergonomie</span><span>Design</span><span>Wordpress</span><span>Localisation</span><span>2026</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -662,7 +686,7 @@
       <span class="proj-num">002</span>
       <div>
         <div class="proj-title">Projet personnel : publicité Elsass Cola</div>
-        <div class="proj-tags">Communication digitale . Design . Stratégie vidéo · 2026</div>
+        <div class="proj-tags"><span>Communication digitale</span><span>Design</span><span>Stratégie vidéo</span><span>2026</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -671,7 +695,7 @@
       <span class="proj-num">003</span>
       <div>
         <div class="proj-title">Friperie Solidaire</div>
-        <div class="proj-tags">Secours Populaire · Bénévolat · Événementiel · 2026</div>
+        <div class="proj-tags"><span>Secours Populaire</span><span>Bénévolat</span><span>Événementiel</span><span>2026</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -680,7 +704,7 @@
       <span class="proj-num">004</span>
       <div>
         <div class="proj-title">Caweb brunch</div>
-        <div class="proj-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
+        <div class="proj-tags"><span>ADECAWEB</span><span>Séminaire design</span><span>Gestion de projet</span><span>2026</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -698,7 +722,7 @@
       <span class="proj-num">005</span>
       <div>
         <div class="proj-title">Communication de l'app Trok</div>
-        <div class="proj-tags">TROK · Communication digitale · Création de contenu · Stratégie vidéo · 2026</div>
+        <div class="proj-tags"><span>TROK</span><span>Communication digitale</span><span>Création de contenu</span><span>Stratégie vidéo</span><span>2026</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -711,10 +735,10 @@
     <div class="modal-inner">
       <button class="modal-close" onclick="closeModal('modal-001')">Fermer ✕</button>
       <div class="modal-num">001</div>
-      <div class="modal-title">Refonte du Café Bretelles</div>
+      <div class="modal-title">Refonte Café Bretelles</div>
       <div class="modal-tags">Ergonomie · Design · WordPress · Localisation · 2026</div>
       <video controls class="modal-media" playsinline><source src="./maquette-cafe-bretelelles.mp4" type="video/mp4"></video>
-        <p class="modal-desc">Refonte du site web du Café Bretelles à Strasbourg : dans le cadre duquel j'ai pu travaillé sur des enjeux d'ergonomie UX, design web, intégration CMS WordPress et localisation multilingue.</p>
+        <p class="modal-desc"> Dans le cadre de la refonte du site web du Café Bretelles j'ai pu travaillé sur des enjeux d'ergonomie UX, design web, intégration CMS WordPress et localisation multilingue.</p>
       <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
     </div>
   </div>
@@ -726,12 +750,12 @@
       <div class="modal-title">Publicité Elsass Cola</div>
       <div class="modal-tags">Communication . Design . Stratégie marketing · 2026</div>
       <img src="./Studio_A67.pdf" class="modal-media" alt="Publicité Elsass Cola"> 
-      <p class="modal-desc">Travail personnel sur la présentation d'une strategie vidéo pour Elsass Cola incluant des enjeux de marketing digital & de création de contenu.</p>
-        <a href="Strategie_Elsass_Cola.pdf" download class="cv-dl-btn">
+      <p class="modal-desc">Travail personnel sur la présentation d'une stratégie vidéo pour Elsass Cola incluant des enjeux de marketing digital & de création de contenu.</p>
+        <a href="Strategie_Elsass_Cola.pdf" download class="cv-dl-btn"></a>
           <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
           Télécharger la presentation 
         </a>
-      <a href=""↗</a>
+      <a href="↗"></a>
     </div>
   </div>
 
@@ -743,7 +767,6 @@
       <div class="modal-tags">Secours Populaire · Bénévolat · Événementiel · 2026</div>
       <img src="./friperie-solidaire.jpg" class="modal-media" alt="Friperie Solidaire"> 
       <p class="modal-desc">Organisation d'une friperie solidaire pour étudiants dans le cadre du bénévolat au Secours Populaire Français, section 67 de Strasbourg.</p>
-      <a href="https://theopro.unistra.fr/actualites/actualite/friperie-solidaire-du-secours-populaire-20-fevrier-au-studium" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
     </div>
   </div>
 
@@ -755,7 +778,7 @@
       <div class="modal-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
       <img src="./caweb_brunch.jpeg" class="modal-media" alt="Caweb brunch"> 
       <p class="modal-desc">Événement organisé par le bureau des élèves ADECAWEB : brunch et séminaire en collaboration avec des professionnels du monde de l'UX design & du graphisme.</p>
-      <a href="https://www.linkedin.com/posts/association-adecaweb_adecaweb-caweb-graphisme-activity-7427060040815001600-8j4R?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+      <a href="https://www.linkedin.com/posts/association-adecaweb_adecaweb-caweb-graphisme-activity-7427060040815001600-8j4R?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" style="display:inline-flex; width: fit-content; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
     </div>
   </div>
 
@@ -775,10 +798,10 @@
       <button class="modal-close" onclick="closeModal('modal-005')">Fermer ✕</button>
       <div class="modal-num">005</div>
       <div class="modal-title">Communication digitale Trok</div>
-      <div class="modal-tags">TROK · Communication digitale · Création de contenu · Stratégie vidéo · 2026</div>
+      <div class="modal-tags">TROK · Communication · Création de contenu · Stratégie vidéo · 2026</div>
       <img src="./trok.jpg" class="modal-media" alt="Communication de l'App TROK"> 
-      <p class="modal-desc">Création de contenu vidéo pour les reseaux de l'app Trok & élaboration d'une stratégie digitale</p>
-      <a href="https://trok-app.com" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+      <p class="modal-desc">Création de contenu vidéo pour les reseaux de l'app Trok & élaboration d'une stratégie digitale sur Instagram</p>
+      <a href="https://trok-app.com" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir l'app Web ↗</a>
     </div>
   </div>
 
@@ -1035,8 +1058,7 @@
     <div class="contact-grid">
       <div>
         <p class="contact-desc">Polyvalent, curieux et passionné par le numérique et l'organisation de projets,
-             je suis actuellement à la recherche d'une alternance en communication et développement web. <p></p> N'hésitez pas à me contacter!
-
+             je suis actuellement à la recherche d'une alternance en communication et développement web. <p class="orange"> N'hésitez pas à me contacter!</p>
       </div>
       <div>
         <a href="mailto:votre@email.com" class="contact-email">schoennagelj@gmail.com</a>
@@ -1062,11 +1084,20 @@
           </a>
             -->
 
+          <a href="https://www.tiktok.com/@am3dee0" target="_blank" rel="noopener" class="social-link">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+              </svg>
+            </span>
+            TikTok — @am3dee0
+          </a>
+
         <a href="tel:+33685456196" target="_blank" rel="noopener" class="social-link">
             <span class="social-icon">
             <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             </span>
-            +33 6 85 45 61 96
+            +33 6 85 .. .. ..
           </a>
 
    <a href="https://maps.app.goo.gl/strasbourg" target="_blank" rel="noopener" class="social-link">
