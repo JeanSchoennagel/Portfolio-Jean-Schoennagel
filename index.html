@@ -26,440 +26,590 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --bg: rgba(253,246,239,0.88);
-      --ink: #1a1714;
-      --muted: #8a8378;
-      --accent: #c8401a;
-      --line: rgba(26,23,20,0.12);
-      --gap: clamp(40px, 6vw, 80px);
-    }
+      :root {
+        --bg: rgba(253,246,239,0.88);
+        --ink: #1a1714;
+        --muted: #8a8378;
+        --accent: #c8401a;
+        --line: rgba(26,23,20,0.12);
+        --gap: clamp(32px, 5vw, 80px);
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Mono', monospace;
-      font-size: clamp(13px, 1.1vw, 15px);
-      line-height: 1.7;
-      cursor: none;
-    }
-
-    /* ─── Custom cursor ─── */
-    .cursor {
-      width: 10px; height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: fixed; top: 0; left: 0;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s;
-      mix-blend-mode: multiply;
-    }
-    .cursor.big { transform: translate(-50%, -50%) scale(4); background: rgba(200,64,26,0.2); }
-
-    /* ─── Nav ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      padding: 20px var(--gap);
-      display: flex; justify-content: space-between; align-items: center;
-      z-index: 100;
-      /*mix-blend-mode: multiply;*/
-      background: var(--bg);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
-      letter-spacing: 0.01em;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex; gap: 2rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: var(--accent); }
-
-    /* ─── Sections ─── */
-    section {
-      padding: calc(var(--gap) * 1) var(--gap);
-      margin-bottom: 2rem;
-      display: flex; flex-direction: column; justify-content: center;
-      border-bottom: 1px solid var(--line);
-    }
-
-    /* ─── Hero ─── */
-    #hero { min-height: 100vh; position: relative; overflow: hidden; display: block; margin-bottom: 2rem; padding-top: 60px; }
-
-    .hero-label {
-      font-size: 0.9rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
-    }
-
-    /* ── Photo hero ── */
-      .hero-layout {
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 3rem;
-      align-items: center;
-      min-height: 80vh; 
-    }
-    .hero-photo {
-      width: 280px; height: 320px;
-      object-fit: cover; object-position: center;
-      border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
-      transition: border-radius 0.6s ease, filter 0.3s;
-    }
-    /*.hero-photo {
-      border-radius: 4px 40% 4px 40% / 40% 4px 40% 4px;
-      box-shadow: 6px 6px 0px var(--accent);
-      filter: grayscale(15%);
-      transition: border-radius 0.5s ease, filter 0.3s, box-shadow 0.3s;
-    }*/
-    /*blob*/
-    /*portrait simple*/
-    /*.hero-photo {
-      border-radius: 12px;
-    }*/
-
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.5rem, 8vw, 8rem);
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.4s forwards;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      font-size: 1.1rem; 
-      max-width: 55ch;
-      margin-top: 2.5rem;
-      color: var(--muted);
-      opacity: 0;
-      animation: fadeUp 0.9s 0.7s forwards;
-      margin-bottom: 4rem;
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 40px; right: var(--gap);
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      writing-mode: vertical-rl;
-      animation: pulse 2s infinite;
-    }
-
-    .big-bg {
-      position: absolute;
-      right: -0vw; bottom: -4vh;
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(80px, 15vw, 240px);
-      color: var(--bg);
-      -webkit-text-stroke: 3px #c8401aa5; 
-      /*pointer-events: none;
-      user-select: none;*/
-      line-height: 1;
-    }
-      .big-bg:hover {
-        color: var(--accent);
-        -webkit-text-stroke: 0px; 
+        /* Échelle typographique */
+        --text-sm:   clamp(0.65rem, 1.2vw, 0.75rem);
+        --text-sm:   clamp(0.75rem, 1.4vw, 0.85rem);
+        --text-base: clamp(0.85rem, 1.6vw, 1rem);
+        --text-md:   clamp(0.9rem,  1.8vw, 1.05rem);
+        --text-lg:   clamp(1rem,    2.2vw, 1.3rem);
+        --text-xl:   clamp(1.2rem,  2.8vw, 1.6rem);
+        --text-2xl:  clamp(1.6rem,  3.5vw, 2rem);
+        --text-h2:   clamp(2rem,    5vw,   4.5rem);
+        --text-h1:   clamp(2.5rem,  8vw,   8rem);
       }
 
-    /* ─── Section titles ─── */
-    .section-num {
-      font-size: 0.9rem;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-    h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 5vw, 4.5rem);
-      line-height: 1;
-      margin-bottom: 3rem;
-    }
+      html { scroll-behavior: smooth; }
 
-    /* ─── Compétences ─── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 0;
-      border: 1px solid var(--line);
-    }
-    .skill-item {
-      padding: 2rem;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      transition: background 0.25s;
-    }
-    .skill-item:hover { background: var(--accent); color: var(--bg); }
-    .skill-item h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-    }
-    .skill-item p { font-size: 1rem; color: var(--accent); }
-    .skill-item:hover p { color: var(--bg); }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: 'DM Mono', monospace;
+        font-size: var(--text-base);
+        line-height: 1.7;
+        cursor: none;
+      }
 
-    /* LANGUES */
-    .lang-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2px; background: var(--line); }
-    .lang-card { background: var(--bg); padding: 2.5rem 2rem; }
-    .lang-flag { font-size: 3.6rem; margin-bottom: 1rem; display: block; margin-left: 110px; }
-    .lang-name { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 0.2rem; }
-        .lang-name:hover { color: var(--accent); gap: 1.5rem; }
-    .lang-level { font-size: 0.95rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem; }
-        /*.lang-level:hover { color: var(--accent); gap: 1.5rem; padding-left: 1rem; }*/
-    .lang-bar-track { height: 2px; background: var(--line); }
-    .lang-bar-fill { height: 2px; background: var(--accent); width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
-    .lang-note { font-size: 0.95rem; color: var(--muted); margin-top: 0.7rem; }
-        /*.lang-note:hover { gap: 1.5rem; padding-left: 1rem; }*/
+      /* ─── Custom cursor ─── */
+      .cursor {
+        width: 10px; height: 10px;
+        background: var(--accent);
+        border-radius: 50%;
+        position: fixed; top: 0; left: 0;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.1s;
+        mix-blend-mode: multiply;
+      }
+      .cursor.big { transform: translate(-50%, -50%) scale(4); background: rgba(200,64,26,0.2); }
 
-    /* ─── Projets ─── */
-    .projects-list { display: flex; flex-direction: column; gap: 0; }
+      /* ─── Navigation/Header ─── */
+      nav {
+        position: fixed; top: 0; left: 0; right: 0;
+        padding: 20px var(--gap);
+        display: flex; justify-content: space-between; align-items: center;
+        z-index: 100;
+        background: var(--bg);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
 
-    .project-item {
-      display: grid;
-      grid-template-columns: 60px 1fr auto;
-      align-items: center;
-      gap: 2rem;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--line);
-      text-decoration: none;
-      color: inherit;
-      transition: padding-left 0.3s;
-    }
-    .project-item:first-child { border-top: 1px solid var(--line); }
-    .project-item:hover { padding-left: 1rem; color: var(--accent); }
-    .project-item:hover .proj-num { color: var(--accent); }
-
-    .proj-num {
-      font-size: 0.8rem;
-      color: var(--muted);
-      transition: color 0.3s;
-    }
-    .proj-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.2rem, 2.5vw, 2rem);
-    }
-
-    .proj-tags {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .proj-tags span {
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: rgba(200, 64, 26, 0.1);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-    }
-
-    .proj-arrow { font-size: 1.8rem; color: var(--muted); transition: transform 0.3s; }
-    .project-item:hover .proj-arrow { transform: translate(4px, -4px); color: var(--accent); }
-
-    /* ENGAGEMENTS */
-    .engage-list { display: flex; flex-direction: column; gap: 0; }
-
-    .engage-item {
-      display: flex; align-items: center; gap: 1.2rem;
-      padding: 1.2rem 0; border-bottom: 1px solid var(--line);
-      font-size: 1rem;
-    }
-    .engage-item:hover {gap: 1.5rem;}
-    .skill-comp {
+      .logo {
         font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      margin-bottom: 0.5rem;
-    }
-    .skill-comp:hover {color: var(--accent);}
-    .engage-item:first-child { border-top: 1px solid var(--line); }
-    .engage-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+        font-size: var(--text-xl);
+        letter-spacing: 0.01em;
+      }
 
-    .skill-ist {
+      nav ul {
+        list-style: none;
+        display: flex; gap: 2rem;
+      }
+      nav a {
+        text-decoration: none;
         color: var(--muted);
-        font-size: 1rem;
-    }
+        font-size: var(--text-sm);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      nav a:hover { color: var(--accent); }
 
-    .link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      text-decoration: none;
-      color: var(--ink);
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      padding: 0.75rem 0;
-      transition: color 0.2s, gap 0.2s;
-    }
-    .link:hover { color: var(--accent); gap: 1.5rem; }
+      /* ─── Sections ─── */
+      section {
+        padding: calc(var(--gap) * 1) var(--gap);
+        margin-bottom: 2rem;
+        display: flex; flex-direction: column; justify-content: center;
+        border-bottom: 1px solid var(--line);
+      }
 
-     /* FORMATION */
-    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2px; background: var(--line); }
-    .edu-item { background: var(--bg); padding: 2rem; }
-    .edu-school { font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
-    .edu-degree { font-family: 'DM Serif Display', serif; font-size: 1.05rem; margin-bottom: 0.3rem; line-height: 1.2; }
-    .edu-date { font-size: 0.75rem; color: var(--muted); }
+      /* ─── Hero ─── */
+      #hero {
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
+        display: block;
+        margin-bottom: 2rem;
+        padding-top: 60px;
+      }
 
-    /* CV BLOCK */
-    .cv-block {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 4rem;
-      padding: 3rem 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .cv-block-label {
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-    .cv-block-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
-      line-height: 1;
-    }
-    .cv-block-title em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .cv-dl-btn {
-      display: inline-flex; align-items: center; gap: 0.8rem;
-      padding: 0.8rem 1.6rem;
-      border: 1px solid var(--line);
-      color: var(--muted); font-family: 'DM Mono', monospace;
-      font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase;
-      text-decoration: none;
-      transition: color 0.2s, border-color 0.2s, gap 0.2s;
-      white-space: nowrap;
-    }
-    .cv-dl-btn:hover { color: var(--accent); border-color: var(--accent); gap: 1.2rem; }
-    .cv-dl-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+      .hero-label {
+        font-size: var(--text-sm);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.8s 0.2s forwards;
+      }
 
-    /* ── Expérience ── */
-    .xp-item {
-      display: grid; grid-template-columns: 180px 1fr; gap: 2rem;
-      padding: 2rem 0; border-bottom: 1px solid var(--line);
-      transition: padding-left 0.3s;
-    }
-    .xp-item:first-child { border-top: 1px solid var(--line); }
-            .xp-item:hover { padding-left: 0.8rem; }
-    .xp-date { font-size: 1rem; color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
-    .xp-loc { font-size: 0.8rem; color: var(--accent); display: block; margin-top: 0.2rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .xp-role { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin-bottom: 0.15rem; }
-        .xp-role:hover {color: var(--accent);}
-    .xp-company { font-size: 1rem; color: var(--muted); margin-bottom: 0.6rem; white-space: nowrap; }
-    .xp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-    .xp-tag { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: rgba(200, 64, 26, 0.1); border: none;  padding: 0.3rem 0.8rem; border-radius: 20px;}
-    .xp-erasmus { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding-left: 5rem; border-top: 1px solid var(--line); }
+      /* ── Photo hero ── */
+      .hero-layout {
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 3rem;
+        align-items: center;
+        min-height: 80vh;
+      }
+      .hero-photo {
+        width: 280px; height: 320px;
+        object-fit: cover; object-position: center;
+        border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+        transition: border-radius 0.6s ease, filter 0.3s;
+      }
 
-    /* ─── Contact ─── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .contact-desc { color: var(--muted); max-width: 36ch; font-size: 1rem; }
-    .contact-email {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      color: var(--accent);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 3rem;
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 0.5rem;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .contact-email:hover { color: var(--ink); border-color: var(--ink); }
-    .orange { color: var(--accent); max-width: 36ch; font-size: 1rem; }
+      h1 {
+        font-family: 'DM Serif Display', serif;
+        font-size: var(--text-h1);
+        line-height: 0.95;
+        letter-spacing: -0.02em;
+        opacity: 0;
+        animation: fadeUp 0.9s 0.4s forwards;
+      }
+      h1 em {
+        font-style: italic;
+        color: var(--accent);
+      }
 
-    .social-links { display: flex; flex-direction: column; gap: 1rem; }
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--line);
-      transition: color 0.2s, gap 0.2s;
-    }
+      .hero-sub {
+        font-size: var(--text-base);
+        max-width: 55ch;
+        margin-top: 2.5rem;
+        color: var(--muted);
+        opacity: 0;
+        animation: fadeUp 0.9s 0.7s forwards;
+        margin-bottom: 4rem;
+      }
 
-    .social-link:hover { color: var(--accent); gap: 1.5rem; }
-    .social-icon {
-      width: 32px; height: 32px;
-      border: 1px solid currentColor;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .social-icon svg { width: 14px; height: 14px; fill: currentColor; }
+      .hero-scroll {
+        position: absolute;
+        bottom: 40px; right: var(--gap);
+        font-size: var(--text-sm);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        writing-mode: vertical-rl;
+        animation: pulse 2s infinite;
+      }
 
-    /* ─── Footer ─── */
-    footer {
-      padding: 2rem var(--gap);
-      display: flex; justify-content: space-between;
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
+      .big-bg {
+        position: absolute;
+        right: -0vw; bottom: -4vh;
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(80px, 15vw, 240px);
+        color: var(--bg);
+        -webkit-text-stroke: 3px #c8401aa5;
+        line-height: 1;
+      }
+      .big-bg:hover {
+        color: var(--accent);
+        -webkit-text-stroke: 0px;
+      }
 
-    /* ─── Animations ─── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.5; }
-      50%       { opacity: 1; }
-    }
+      /* ─── Section titles ─── */
+      .section-num {
+        font-size: var(--text-sm);
+        letter-spacing: 0.15em;
+        color: var(--accent);
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
 
-    /* ─── Responsive & mobile friendly ─── */
+      .section-text {
+        font-size: var(--text-sm);
+        letter-spacing: 0.15em;
+        color: var(--accent);
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-family: 'DM Serif Display', serif;
+        font-size: var(--text-h2);
+        line-height: 1;
+        margin-bottom: 3rem;
+      }
+
+      /* ─── Compétences ─── */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 0;
+        border: 1px solid var(--line);
+      }
+      .skill-item {
+        padding: 2rem;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        transition: background 0.25s;
+      }
+      .skill-item:hover { background: var(--accent); color: var(--bg); }
+      .skill-item h3 {
+        font-family: 'DM Serif Display', serif;
+        font-size: var(--text-lg);
+        margin-bottom: 0.8rem;
+        color: var(--ink);
+      }
+      .skill-item:hover h3 { color: var(--bg); }
+      .skill-item p { font-size: var(--text-sm); color: var(--muted); }
+      .skill-item:hover p { color: var(--bg); }
+
+      /* ─── Langues ─── */
+      .lang-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2px;
+        background: var(--line);
+      }
+      .lang-card { background: var(--bg); padding: 2.5rem 2rem; }
+      .lang-flag {
+        font-size: clamp(1.8rem, 4vw, 3.6rem);
+        margin-bottom: 1rem;
+        display: block;
+        margin-left: clamp(0px, 8vw, 110px);
+      }
+      .lang-name {
+        font-family: 'DM Serif Display', serif;
+        font-size: var(--text-xl);
+        margin-bottom: 0.2rem;
+      }
+      .lang-name:hover { color: var(--accent); }
+      .lang-level {
+        font-size: var(--text-sm);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1.2rem;
+      }
+      .lang-bar-track { height: 2px; background: var(--line); }
+      .lang-bar-fill { height: 2px; background: var(--accent); width: 0; transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+      .lang-note { font-size: var(--text-sm); color: var(--muted); margin-top: 0.7rem; }
+
+      /* ─── Projets ─── */
+      .projects-list { display: flex; flex-direction: column; gap: 0; }
+
+      .project-item {
+        display: grid;
+        grid-template-columns: 60px 1fr auto;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--line);
+        text-decoration: none;
+        color: inherit;
+        transition: padding-left 0.3s;
+        cursor: pointer;
+      }
+      .project-item:first-child { border-top: 1px solid var(--line); }
+      .project-item:hover { padding-left: 1rem; color: var(--accent); }
+      .project-item:hover .proj-num { color: var(--accent); }
+
+      .proj-num {
+        font-size: var(--text-sm);
+        color: var(--muted);
+        transition: color 0.3s;
+      }
+      .proj-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(1rem, 2.5vw, 2rem);
+      }
+      .proj-tags {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.4rem;
+      }
+      .proj-tags span {
+        font-size: var(--text-sm);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: rgba(200,64,26,0.1);
+        padding: 0.25rem 0.7rem;
+        border-radius: 20px;
+      }
+      .proj-arrow { font-size: var(--text-xl); color: var(--muted); transition: transform 0.3s; }
+      .project-item:hover .proj-arrow { transform: translate(4px, -4px); color: var(--accent); }
+
+      /* ── Carrousel ── */
+      .carousel {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+      .carousel-track {
+        display: flex;
+        transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+      }
+      .carousel-slide {
+        min-width: 100%;
+        max-height: 420px;
+        object-fit: contain;
+        display: block;
+      }
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        color: var(--ink);
+        font-family: 'DM Mono', monospace;
+        font-size: 1.2rem;
+        width: 36px; height: 36px;
+        cursor: none;
+        z-index: 10;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .carousel-btn:hover { color: var(--accent); border-color: var(--accent); }
+      .carousel-btn.prev { left: 8px; }
+      .carousel-btn.next { right: 8px; }
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 0.8rem;
+      }
+      .carousel-dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: var(--line);
+        transition: background 0.3s;
+      }
+      .carousel-dot.active { background: var(--accent); }
+
+      /* ─── Engagements ─── */
+      .engage-list { display: flex; flex-direction: column; }
+
+      .engage-item {
+        display: flex;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--line);
+        align-items: stretch;
+        transition: padding-left 0.3s;
+      }
+      .engage-item:first-child { border-top: 1px solid var(--line); }
+      .engage-item:hover { padding-left: 0.5rem; }
+
+      .engage-dot {
+        width: 8px; height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        flex-shrink: 0;
+        align-self: center;
+      }
+
+      .engage-body { flex: 1; }
+
+      .engage-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: var(--text-xl);
+        color: var(--ink);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 0.5rem;
+        transition: color 0.2s;
+      }
+      .engage-title:hover { color: var(--accent); }
+
+      .engage-desc {
+        font-size: var(--text-base);
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 0.6rem;
+      }
+
+      .engage-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+
+      .engage-tag {
+        font-size: var(--text-sm);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: rgba(200,64,26,0.1);
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+      }
+
+      .engage-arrow {
+        font-size: var(--text-md);
+        color: var(--muted);
+        align-self: center;
+        transition: transform 0.3s, color 0.3s;
+      }
+      .engage-item:hover .engage-arrow {
+        transform: translate(4px, -4px);
+        color: var(--accent);
+      }
+
+      /* ─── Formation ─── */
+      .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2px; background: var(--line); }
+      .edu-item { background: var(--bg); padding: 2rem; }
+      .edu-school { font-size: var(--text-sm); letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+      .edu-degree { font-family: 'DM Serif Display', serif; font-size: var(--text-md); margin-bottom: 0.3rem; line-height: 1.2; }
+      .edu-date { font-size: var(--text-sm); color: var(--muted); }
+
+      /* ─── CV Block ─── */
+      .cv-block {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 4rem;
+        padding: 3rem 0;
+        /*
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        */
+      }
+      .cv-block-label {
+        font-size: var(--text-sm);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+      }
+      .cv-block-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(1.6rem, 4vw, 3.5rem);
+        line-height: 1;
+      }
+      .cv-block-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+      .cv-dl-btn {
+        display: inline-flex; align-items: center; gap: 0.8rem;
+        padding: 0.8rem 1.6rem;
+        border: 1px solid var(--line);
+        color: var(--muted); font-family: 'DM Mono', monospace;
+        font-size: var(--text-sm); letter-spacing: 0.12em; text-transform: uppercase;
+        text-decoration: none;
+        transition: color 0.2s, border-color 0.2s, gap 0.2s;
+        white-space: nowrap;
+      }
+      .cv-dl-btn:hover { color: var(--accent); border-color: var(--accent); gap: 1.2rem; }
+      .cv-dl-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+      /* ─── Expérience ─── */
+      .xp-item {
+        display: grid; grid-template-columns: 180px 1fr; gap: 2rem;
+        padding: 2rem 0; border-bottom: 1px solid var(--line);
+        transition: padding-left 0.3s;
+      }
+      .xp-item:first-child { border-top: 1px solid var(--line); }
+      .xp-item:hover { padding-left: 0.8rem; }
+      .xp-date { font-size: var(--text-sm); color: var(--muted); padding-top: 0.2rem; line-height: 1.6; }
+      .xp-loc { font-size: var(--text-sm); color: var(--accent); display: block; margin-top: 0.2rem; letter-spacing: 0.08em; text-transform: uppercase; }
+      .xp-role { font-family: 'DM Serif Display', serif; font-size: var(--text-xl); margin-bottom: 0.15rem; }
+      .xp-role:hover { color: var(--accent); }
+      .xp-company { font-size: var(--text-base); color: var(--muted); margin-bottom: 0.6rem; white-space: nowrap; }
+      .xp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+      .xp-tag {
+        font-size: var(--text-sm);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: rgba(200,64,26,0.1);
+        border: none;
+        padding: 0.25rem 0.7rem;
+        border-radius: 20px;
+      }
+      .xp-erasmus {
+        display: grid; grid-template-columns: 180px 1fr; gap: 2rem;
+        padding-left: 5rem;
+        border-top: 1px solid var(--line);
+      }
+
+      /* ─── Contact ─── */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .contact-desc { color: var(--muted); max-width: 36ch; font-size: var(--text-base); }
+      .orange { color: var(--accent); max-width: 36ch; font-size: var(--text-base); }
+      .contact-email {
+        font-family: 'DM Serif Display', serif;
+        font-size: clamp(1.2rem, 3vw, 2.5rem);
+        color: var(--accent);
+        text-decoration: none;
+        display: block;
+        margin-bottom: 3rem;
+        border-bottom: 2px solid var(--ink);
+        padding-bottom: 0.5rem;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .contact-email:hover { color: var(--ink); border-color: var(--ink); }
+
+      .social-links { display: flex; flex-direction: column; gap: 1rem; }
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-decoration: none;
+        color: var(--muted);
+        font-size: var(--text-sm);
+        letter-spacing: 0.08em;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--line);
+        transition: color 0.2s, gap 0.2s;
+      }
+      .social-link:hover { color: var(--accent); gap: 1.5rem; }
+      .social-icon {
+        width: 32px; height: 32px;
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+      }
+      .social-icon svg { width: 14px; height: 14px; fill: currentColor; }
+
+      /* ─── Footer ─── */
+      footer {
+        padding: 0.5rem var(--gap);
+        display: flex; justify-content: space-between;
+        font-size: var(--text-sm);
+        color: var(--muted);
+        letter-spacing: 0.08em;
+      }
+
+      /* ─── Animations ─── */
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.5; }
+        50%       { opacity: 1; }
+      }
+
+      /* ─── Modales ─── */
+      .modal {
+        display: none; position: fixed; inset: 0; z-index: 1000;
+        background: rgba(26,23,20,0.88); backdrop-filter: blur(8px);
+        align-items: center; justify-content: center;
+      }
+      .modal.open { display: flex; }
+      .modal-inner {
+        position: relative; max-width: 760px; width: 90%;
+        max-height: 85vh; overflow-y: auto;
+        background: var(--bg); padding: 2.5rem;
+      }
+      .modal-close {
+        position: absolute; top: -2.2rem; right: 0;
+        background: none; border: none; color: var(--bg);
+        font-family: 'DM Mono', monospace;
+        font-size: var(--text-sm);
+        letter-spacing: 0.12em; text-transform: uppercase; cursor: none;
+        transition: color 0.2s;
+      }
+      .modal-close:hover { color: var(--accent); }
+      .modal-num { font-size: var(--text-sm); color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+      .modal-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 4vw, 2.5rem); margin-bottom: 0.5rem; }
+      .modal-tags { font-size: var(--text-sm); color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1.5rem; }
+      .modal-media { width: 100%; display: block; max-height: 420px; object-fit: contain; }
+      .modal-desc { font-size: var(--text-base); color: var(--muted); margin-top: 1.2rem; line-height: 1.8; }
+
+      /* ─── Responsive — layout uniquement ─── */
       @media (max-width: 768px) {
-        /* ── Nav ── */
         nav { padding: 10px 1.5rem; }
         nav ul { display: none; }
-        .logo { font-size: 0.85rem; }
         #burger { display: block; }
         #nav-menu {
           display: none;
@@ -472,18 +622,15 @@
         }
         #nav-menu.open { display: flex; }
         #nav-menu li { width: 100%; text-align: center; }
-        #nav-menu li a { display: block; padding: 0.8rem 0; font-size: 0.82rem; }
+        #nav-menu li a { display: block; padding: 0.8rem 0; }
 
-        /* ── Anti-overflow global ── */
         body { overflow-x: hidden; cursor: auto; }
-        section { overflow-x: hidden; padding: 4rem 1.2rem 3rem; min-height: auto; }
+        section { overflow-x: hidden; padding: 3rem 1.2rem 2rem; min-height: auto; }
         * { max-width: 100%; }
 
-        /* ── Curseur ── */
         .cursor { display: none; }
 
-        /* ── Hero ── */
-        #hero { display: flex; flex-direction: column; justify-content: center; padding-top: 70px; }
+        #hero { display: flex; flex-direction: column; justify-content: center; padding-top: 60px; }
         .hero-layout {
           grid-template-columns: 1fr;
           justify-items: center;
@@ -492,146 +639,44 @@
           min-height: unset;
         }
         .hero-photo {
-          width: 190px; height: 190px;
+          width: 160px; height: 160px;
           order: -1;
           border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
           object-fit: cover;
-          margin: 0 auto 0.8rem auto;
+          margin: 0 auto 1rem auto;
         }
+        .hero-label { text-align: center; word-break: break-word; margin-bottom: 1rem; }
+        .hero-sub { text-align: center; max-width: 100%; margin-top: 1rem; margin-bottom: 1.5rem; }
         .big-bg { display: none; }
         .hero-scroll { display: none; }
 
-        /* ── Typographie globale mobile ── */
-        h1 {
-          font-size: clamp(2rem, 10vw, 3.2rem);
-          text-align: center;
-          word-break: break-word;
-        }
-        h2 {
-          font-size: clamp(1.6rem, 7vw, 2.2rem);
-          margin-bottom: 1.8rem;
-        }
-        h3 { font-size: 0.95rem; }
-        .section-num { font-size: 0.68rem; }
-        .hero-label {
-          text-align: center;
-          font-size: 0.65rem;
-          letter-spacing: 0.08em;
-          word-break: break-word;
-          margin-bottom: 1.5rem;
-        }
-        .hero-sub {
-          text-align: center;
-          font-size: 0.82rem;
-          max-width: 100%;
-          margin-top: 1rem;
-          margin-bottom: 0.6rem;
-        }
-        .hero-meta {
-          justify-content: center;
-          text-align: center;
-          font-size: 0.7rem;
-          gap: 0.4rem;
-          flex-direction: column;
-        }
+        h2 { margin-bottom: 1.8rem; }
 
-        /* ── Compétences ── */
-        .skills-grid { grid-template-columns: 1fr 1fr;  }
-        .skill-item h3 { font-size: 0.95rem; }
-        .skill-item p { font-size: 0.95rem; }
+        .skills-grid { grid-template-columns: 1fr 1fr; }
 
-        /* ── Langues ── */
-        .lang-grid {
-          grid-template-columns: 1fr 1fr;
-          width: 100%;
-          overflow: hidden;
-        }
-        .lang-card {
-          padding: 1.2rem 0.8rem;
-          min-width: 0;
-          overflow: hidden;
-        }
-        .lang-flag { margin-left: 0; font-size: 1.6rem; }
-        .lang-name { font-size: 1.1rem; }
-        .lang-level { font-size: 0.6rem; letter-spacing: 0.07em; }
-        .lang-note { font-size: 0.65rem; }
+        .lang-grid { grid-template-columns: 1fr 1fr; width: 100%; overflow: hidden; }
+        .lang-card { padding: 1rem 0.8rem; min-width: 0; overflow: hidden; }
+        .lang-flag { margin-left: 0; }
 
-        /* ── Projets ── */
         .project-item { grid-template-columns: 36px 1fr; gap: 0.8rem; padding: 1.2rem 0; }
-        .proj-thumb { display: none; }
         .proj-arrow { display: none; }
-        .proj-title { font-size: 1rem; }
-        .proj-tags { font-size: 0.68rem; }
-        .proj-num { font-size: 0.65rem; }
 
-        /* ── Engagements ── */
-        .engage-item { padding: 1rem 0; gap: 0.8rem; font-size: 0.8rem; }
-        .skill-comp { font-size: 1rem; }
-        .skill-ist { font-size: 0.72rem; }
+        .engage-arrow { display: none; }
 
-        /* ── Expérience & Formation ── */
         .xp-item { grid-template-columns: 1fr; gap: 0.2rem; }
         .xp-erasmus { grid-template-columns: 1fr; padding-left: 0.8rem; }
-        .xp-date {
-          font-size: 0.72rem;
-          /* Empêche iOS de détecter les dates comme numéros */
-          unicode-bidi: plaintext;
-        }
-        .xp-loc { font-size: 0.68rem; }
-        .xp-role { font-size: 1.05rem; overflow-wrap: break-word; word-break: break-word; }
-        .xp-company {
-          white-space: normal;
-          overflow-wrap: break-word;
-          word-break: break-word;
-          font-size: 0.78rem;
-        }
-        .xp-tag { font-size: 0.65rem; }
+        .xp-date { unicode-bidi: plaintext; }
+        .xp-company { white-space: normal; overflow-wrap: break-word; word-break: break-word; }
+        .xp-role { overflow-wrap: break-word; word-break: break-word; }
 
-        /* ── CV ── */
         .cv-block { grid-template-columns: 1fr; gap: 1.5rem; }
-        .cv-block-title { font-size: 1.4rem; }
-        .cv-dl-btn { font-size: 0.7rem; padding: 0.8rem 1.2rem; }
 
-        /* ── Contact ── */
         .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-        .contact-email { font-size: 1rem; }
-        .social-link { font-size: 0.75rem; }
 
-        /* ── Modales ── */
-        .modal-inner { max-height: 100vh; padding: 1.5rem; width: 95%; }
-        .modal-title { font-size: 1.2rem; }
-        .modal-tags { font-size: 0.68rem; }
-        .modal-desc { font-size: 0.75rem; }
-        .carousel-slide img { height: 200px; }
+        .modal-inner { max-height: 90vh; padding: 1.5rem; width: 95%; }
 
-        /* ── Footer ── */
-        footer { flex-direction: column; gap: 0.3rem; text-align: center; font-size: 0.65rem; }
-    } 
-
-    /* ── Modales ── */
-    .modal {
-      display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(26,23,20,0.88); backdrop-filter: blur(8px);
-      align-items: center; justify-content: center;
-    }
-    .modal.open { display: flex; }
-    .modal-inner {
-      position: relative; max-width: 760px; width: 90%; max-height: 100vh; overflow-y: auto; 
-      background: var(--bg); padding: 2.5rem;
-    }
-    .modal-close {
-      position: absolute; top: -2.2rem; right: 0;
-      background: none; border: none; color: var(--bg);
-      font-family: 'DM Mono', monospace; font-size: 0.82rem;
-      letter-spacing: 0.12em; text-transform: uppercase; cursor: none;
-      transition: color 0.2s;
-    }
-    .modal-close:hover { color: var(--accent); }
-    .modal-num { font-size: 0.9rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
-    .modal-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 0.5rem; }
-    .modal-tags { font-size: 0.9rem; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1.5rem; }
-    .modal-media { width: 100%; display: block; max-height: 420px; object-fit: contain;}
-    .modal-desc { font-size: 0.92rem; color: var(--muted); margin-top: 1.2rem; line-height: 1.8; }
+        footer { flex-direction: column; gap: 0.3rem; text-align: center; }
+      }
 
   </style>
 </head>
@@ -639,16 +684,16 @@
 
   <div class="cursor" id="cursor"></div>
 
-  <!-- Navigation -->
+  <!-- Header/Navigation -->
   <nav>
     <span class="logo">Jean Schoennagel</span>
     <ul>
       <li><a href="#projets">Projets</a></li>
       <li><a href="#competences">Compétences</a></li>
-      <li><a href="#langues">Langues</a></li>
+      <!--<li><a href="#langues">Langues</a></li>-->
       <li><a href="#engagements">Engagements</a></li>
       <li><a href="#experience">Expériences</a></li>
-      <li><a href="#cv">Curriculum Vitæ</a></li>
+      <!--<li><a href="#cv">Curriculum Vitæ</a></li>-->
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -659,25 +704,25 @@
         <div>
           <p class="hero-label">Communicant multilingue · Designer · Créateur web</p>
           <h1>Gestion de projets<br>web <em>multilingues.</em></h1>
-          <p class="hero-sub">Diplômé d'une Licence d'Anglais et actuellement en Master Communication Web Multilingue à l'Université de Strasbourg, je conçois et développe des expériences numériques humaines et adaptées à vos besoins.</p>
+          <p class="hero-sub">Diplômé d'une Licence d'Anglais et actuellement en Master Communication Web Multilingue à l'Université de Strasbourg, je recherche une Alternance afin de vous aider à conçevoir et développer des expériences numériques adaptées à vos besoins.</p>
         </div>
         <img src="./moi.jpg" alt="Jean Schoennagel" class="hero-photo">
       </div>
-      <a href="#projets"><div class="big-bg">PORTFOLIO</div></a>
+      <a href="#projets"><div class="big-bg">MES PROJETS</div></a>
     </section>
 
 <!-- PROJETS -->
 <section id="projets">
   <p class="section-num">01 — Projets</p>
   <h2>Travaux<br>récents.</h2>
-    <p class="section-num">n'hésitez-pas à cliquer sur les projets</p>
+    <p class="section-text">n'hésitez-pas à cliquer sur les projets</p>
   <div class="projects-list">
 
     <div class="project-item" onclick="openModal('modal-001')">
       <span class="proj-num">001</span>
       <div>
         <div class="proj-title">Refonte du site web du  Café Bretelles</div>
-        <div class="proj-tags"><span>Ergonomie</span><span>Design</span><span>Wordpress</span><span>Localisation</span><span>2026</span></div>
+        <div class="proj-tags"><span>Ergonomie</span><span>Design</span><span>Wordpress</span><span>Localisation</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -686,7 +731,7 @@
       <span class="proj-num">002</span>
       <div>
         <div class="proj-title">Projet personnel : publicité Elsass Cola</div>
-        <div class="proj-tags"><span>Communication digitale</span><span>Design</span><span>Stratégie vidéo</span><span>2026</span></div>
+        <div class="proj-tags"><span>Communication digitale</span><span>Design</span><span>Stratégie vidéo</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -695,7 +740,7 @@
       <span class="proj-num">003</span>
       <div>
         <div class="proj-title">Friperie Solidaire</div>
-        <div class="proj-tags"><span>Secours Populaire</span><span>Bénévolat</span><span>Événementiel</span><span>2026</span></div>
+        <div class="proj-tags"><span>Secours Populaire</span><span>Bénévolat</span><span>Événementiel</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -704,7 +749,7 @@
       <span class="proj-num">004</span>
       <div>
         <div class="proj-title">Caweb brunch</div>
-        <div class="proj-tags"><span>ADECAWEB</span><span>Séminaire design</span><span>Gestion de projet</span><span>2026</span></div>
+        <div class="proj-tags"><span>ADECAWEB</span><span>Séminaire design</span><span>Gestion de projet</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -722,7 +767,7 @@
       <span class="proj-num">005</span>
       <div>
         <div class="proj-title">Communication de l'app Trok</div>
-        <div class="proj-tags"><span>TROK</span><span>Communication digitale</span><span>Création de contenu</span><span>Stratégie vidéo</span><span>2026</span></div>
+        <div class="proj-tags"><span>TROK</span><span>Communication digitale</span><span>Création de contenu</span><span>Stratégie vidéo</span></div>
       </div>
       <span class="proj-arrow">↗</span>
     </div>
@@ -738,8 +783,11 @@
       <div class="modal-title">Refonte Café Bretelles</div>
       <div class="modal-tags">Ergonomie · Design · WordPress · Localisation · 2026</div>
       <video controls class="modal-media" playsinline><source src="./maquette-cafe-bretelelles.mp4" type="video/mp4"></video>
-        <p class="modal-desc"> Dans le cadre de la refonte du site web du Café Bretelles j'ai pu travaillé sur des enjeux d'ergonomie UX, design web, intégration CMS WordPress et localisation multilingue.</p>
-      <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+        <p class="modal-desc"> Le site existant souffrait d'une navigation confuse et d'une absence totale de version multilingue, limitant la visibilité de l'établissement auprès d'une clientèle internationale.</p><p class="modal-desc">Avec mon équipe nous avons pris en charge la refonte complète : audit UX, conception des maquettes sur Figma, intégration sous WordPress et localisation en anglais et allemand.</p>
+      <!--<a href="https://www.cafebretelles.fr" target="_blank" rel="noopener" class="modal-link">
+        Voir le site en ligne ↗
+      </a>-->
     </div>
   </div>
 
@@ -750,8 +798,8 @@
       <div class="modal-title">Publicité Elsass Cola</div>
       <div class="modal-tags">Communication . Design . Stratégie marketing · 2026</div>
       <img src="./Studio_A67.pdf" class="modal-media" alt="Publicité Elsass Cola"> 
-      <p class="modal-desc">Travail personnel sur la présentation d'une stratégie vidéo pour Elsass Cola incluant des enjeux de marketing digital & de création de contenu.</p>
-        <a href="Strategie_Elsass_Cola.pdf" download class="cv-dl-btn"></a>
+      <p class="modal-desc">Projet personnel de stratégie de communication vidéo pour Elsass Cola, marque régionale alsacienne.</p><p class="modal-desc"> Conception d'un concept créatif ancré dans l'identité locale, scénarisation et présentation d'une stratégie de diffusion adaptée aux réseaux sociaux.</p>
+        <a href="Strategie_Elsass_Cola.pdf" download class="cv-dl-btn">
           <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
           Télécharger la presentation 
         </a>
@@ -766,7 +814,8 @@
       <div class="modal-title">Friperie Solidaire</div>
       <div class="modal-tags">Secours Populaire · Bénévolat · Événementiel · 2026</div>
       <img src="./friperie-solidaire.jpg" class="modal-media" alt="Friperie Solidaire"> 
-      <p class="modal-desc">Organisation d'une friperie solidaire pour étudiants dans le cadre du bénévolat au Secours Populaire Français, section 67 de Strasbourg.</p>
+        <a href="" target="_blank" rel="noopener" style="display:inline-flex; width: fit-content; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+      <p class="modal-desc">Organisation logistique et communication d'une friperie solidaire destinée aux étudiants strasbourgeois, en collaboration avec le Secours Populaire Français section 67.</p><p class="modal-desc"> Gestion des bénévoles, création des supports visuels et coordination de l'événement au Studium.</p>
     </div>
   </div>
 
@@ -776,9 +825,20 @@
       <div class="modal-num">004</div>
       <div class="modal-title">Caweb brunch</div>
       <div class="modal-tags">ADECAWEB · Séminaire design · Événementiel · 2026</div>
-      <img src="./caweb_brunch.jpeg" class="modal-media" alt="Caweb brunch"> 
-      <p class="modal-desc">Événement organisé par le bureau des élèves ADECAWEB : brunch et séminaire en collaboration avec des professionnels du monde de l'UX design & du graphisme.</p>
-      <a href="https://www.linkedin.com/posts/association-adecaweb_adecaweb-caweb-graphisme-activity-7427060040815001600-8j4R?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" style="display:inline-flex; width: fit-content; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+        <div class="carousel">
+            <button class="carousel-btn prev" onclick="moveCarousel('modal-004', -1)">←</button>
+            <div class="carousel-track">
+              <img src="./caweb_brunch.jpeg" class="carousel-slide" alt="Caweb brunch 1">
+              <img src="./caweb_brunch2.jpeg" class="carousel-slide" alt="Caweb brunch 2">
+            </div>
+            <button class="carousel-btn next" onclick="moveCarousel('modal-004', 1)">→</button>
+            <div class="carousel-dots">
+            <span class="carousel-dot active"></span>
+            <span class="carousel-dot"></span>
+          </div>
+        </div>
+        <a href="https://www.linkedin.com/posts/association-adecaweb_adecaweb-caweb-graphisme-activity-7427060040815001600-8j4R?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" style="display:inline-flex; width: fit-content; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
+      <p class="modal-desc">Co-organisation d'un séminaire professionnel réunissant étudiants du Master CAWEB et intervenants issus du monde de l'UX design et du design graphique, en partenariat avec Chloé Temesvári & Tino de Tinoland.</p><p class="modal-desc"> Gestion du planning, communication sur les réseaux et animation de la journée.</p>
     </div>
   </div>
 
@@ -800,7 +860,7 @@
       <div class="modal-title">Communication digitale Trok</div>
       <div class="modal-tags">TROK · Communication · Création de contenu · Stratégie vidéo · 2026</div>
       <img src="./trok.jpg" class="modal-media" alt="Communication de l'App TROK"> 
-      <p class="modal-desc">Création de contenu vidéo pour les reseaux de l'app Trok & élaboration d'une stratégie digitale sur Instagram</p>
+      <p class="modal-desc">Création de contenus vidéo pour les réseaux sociaux de l'application Trok et élaboration d'une stratégie digitale visant à accroître la visibilité de l'app sur les réseaux.</p>
       <a href="https://trok-app.com" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir l'app Web ↗</a>
     </div>
   </div>
@@ -884,30 +944,55 @@
     <!-- ENGAGEMENTS -->
 
   <section id="engagements">
-    <p class="section-num">04 — Engagements</p>
-    <h2>Mes <br> engagements.</h2>
+  <p class="section-num">04 — Engagements</p>
+  <h2>Mes <br>engagements.</h2>
 
-    <div class="engage-list">
-      <div class="engage-item fade">
-        <span class="engage-dot"></span>
-        <a href="https://www.secourspopulaire.fr/67/" target="_blank" rel="noopener" class="link">
-        <span><p class ="skill-comp">Secours Populaire Français</p>
-            <p class="skill-ist">Bénévolat associatif - distribution alimentaire - collecte - sensibilisation</p></span></a>
+  <div class="engage-list">
+
+    <div class="engage-item">
+      <div class="engage-dot"></div>
+      <div class="engage-body">
+        <a href="https://www.secourspopulaire.fr/67/" target="_blank" rel="noopener" class="engage-title">Secours Populaire Français</a>
+        <p class="engage-desc">Distribution alimentaire, collecte et sensibilisation auprès des étudiants strasbourgeois.</p>
+        <div class="engage-tags">
+          <span class="engage-tag">Bénévolat</span>
+          <span class="engage-tag">Social</span>
+          <span class="engage-tag">Collectes de fonds</span>
+        </div>
       </div>
-      <div class="engage-item fade">
-        <span class="engage-dot"></span>
-        <a href ="https://www.linkedin.com/in/association-adecaweb/?originalSubdomain=fr" target="_blank" rel="noopener" class="link">
-        <span><p class ="skill-comp">Bureau des élèves ADECAWEB</p>
-            <p class="skill-ist">Association étudiante Master CAWEB - organisation de sorties - ateliers rencontre avec professionnels</p></span>
-        </a>
-      </div>
-            <div class="engage-item fade">
-        <span class="engage-dot"></span>
-        <span><p class ="skill-comp">Association AmiDERS</p>
-            <p class="skill-ist">Amicale des Etudiants Roumanophones à Strasbourg - sensibilisation à la culture roumaine - projection de films roumains</p></span>
-      </div>
+      <span class="engage-arrow">↗</span>
     </div>
-  </section>
+
+    <div class="engage-item">
+      <div class="engage-dot"></div>
+      <div class="engage-body">
+        <a href="https://www.linkedin.com/in/association-adecaweb/?originalSubdomain=fr" target="_blank" rel="noopener" class="engage-title">Bureau des élèves ADECAWEB</a>
+        <p class="engage-desc">Organisation d'événements, ateliers et rencontres avec des professionnels du web.</p>
+        <div class="engage-tags">
+          <span class="engage-tag">Associatif</span>
+          <span class="engage-tag">Web</span>
+          <span class="engage-tag">Événementiel</span>
+        </div>
+      </div>
+      <span class="engage-arrow">↗</span>
+    </div>
+
+    <div class="engage-item">
+      <div class="engage-dot"></div>
+      <div class="engage-body">
+        <div class="engage-title">Association AmiDERS</div>
+        <p class="engage-desc">Sensibilisation à la culture roumaine, projection de films, animation d'événements.</p>
+        <div class="engage-tags">
+          <span class="engage-tag">Culturel</span>
+          <span class="engage-tag">Roumain</span>
+          <span class="engage-tag">Etudiant</span>
+        </div>
+      </div>
+      <span class="engage-arrow">↗</span>
+    </div>
+
+  </div>
+</section>
 
 <!-- EXPÉRIENCE -->
   <section id="experience">
@@ -921,23 +1006,34 @@
         <div class="xp-company">Café Bretelles</div>
         <div class="xp-tags">
           <span class="xp-tag">Ergonomie</span><span class="xp-tag">Design</span>
-          <span class="xp-tag">CMS</span><span class="xp-tag">Traduction</span><span class="xp-tag">Localisation</span>
+          <span class="xp-tag">CMS</span><span class="xp-tag">Programmation</span><span class="xp-tag">Localisation</span>
         </div>
       </div>
     </div>
 
     <div class="xp-item">
-      <div class="xp-date">09/2024 . 11/2024<span class="xp-loc">Strasbourg</span></div>
+      <div class="xp-date">05/2024 . 03/2025<span class="xp-loc">Strasbourg</span></div>
       <div>
-        <div class="xp-role">Serveur en Restauration</div>
-        <div class="xp-company">In Vino Veritas</div>
+        <div class="xp-role">Serveur en Restauration & Hotellerie</div>
+        <div class="xp-company">In Vino Veritas · Hotel Regent Petite France · La Cantina</div>
         <div class="xp-tags">
-          <span class="xp-tag">Prise de décision</span><span class="xp-tag">Autonomie</span><span class="xp-tag">Relationnel</span>
+          <span class="xp-tag">Prise de décision</span><span class="xp-tag">Autonomie</span><span class="xp-tag">Relationnel</span><span class="xp-tag">Management</span>
         </div>
       </div>
     </div>
 
     <div class="xp-item">
+      <div class="xp-date">09/2021 . 09/2023<span class="xp-loc">Strasbourg</span></div>
+      <div>
+        <div class="xp-role">Agent d'Accueil</div>
+        <div class="xp-company">UGC Ciné Cité · Opéra National du Rhin</div>
+        <div class="xp-tags">
+          <span class="xp-tag">Accueil clientèle</span><span class="xp-tag">Savoir-être</span><span class="xp-tag">Coopération</span><span class="xp-tag">Relationnel</span>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="xp-item">
       <div class="xp-date">05/2024 . 08/2024<span class="xp-loc">Strasbourg</span></div>
       <div>
         <div class="xp-role">Serveur / Barman</div>
@@ -979,7 +1075,7 @@
           <span class="xp-tag">Pédagogie</span><span class="xp-tag">Sens de l'écoute</span><span class="xp-tag">Patience</span>
         </div>
       </div>
-    </div>
+    </div>-->
 
     <!-- FORMATION -->
     <!--<section id="formation">
@@ -1033,12 +1129,16 @@
         </div>
       </div>
     </div>
+    <!-- MASQUER LA SECTION CV
     </section>
+    -->
   
   <!-- CV -->
-    <section id="cv">
+    <!-- MASQUER LA SECTION CV 
+     <section id="cv">
       <p class="section-num">06 — Curriculum Vitæ</p>
-      <h2>Mon CV<br>complet.</h2>
+      -->
+      <h2 style="margin-top:3.5rem;">Mon CV<br>complet.</h2>
       <div class="cv-block">
         <div>
           <div class="cv-block-label">Disponible en téléchargement</div>
@@ -1054,9 +1154,9 @@
   <!-- Contact -->
   <section id="contact">
     <p class="section-num">06 — Contact</p>
-    <h2>Travaillons<br>ensemble.</h2>
     <div class="contact-grid">
       <div>
+        <h2>Travaillons<br>ensemble.</h2>
         <p class="contact-desc">Polyvalent, curieux et passionné par le numérique et l'organisation de projets,
              je suis actuellement à la recherche d'une alternance en communication et développement web. <p class="orange"> N'hésitez pas à me contacter!</p>
       </div>
@@ -1093,14 +1193,16 @@
             TikTok — @am3dee0
           </a>
 
-        <a href="tel:+33685456196" target="_blank" rel="noopener" class="social-link">
+          <!--
+          <a href="tel:+33685456196" target="_blank" rel="noopener" class="social-link">
             <span class="social-icon">
             <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             </span>
             +33 6 85 .. .. ..
           </a>
+          -->
 
-   <a href="https://maps.app.goo.gl/strasbourg" target="_blank" rel="noopener" class="social-link">
+          <a href="https://maps.app.goo.gl/strasbourg" target="_blank" rel="noopener" class="social-link">
             <span class="social-icon">
               <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
             </span>
@@ -1175,6 +1277,23 @@
         document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
       }
     });
+
+    // Carrousel
+    const carouselState = {};
+
+    function moveCarousel(modalId, direction) {
+      const modal = document.getElementById(modalId);
+      const track = modal.querySelector('.carousel-track');
+      const slides = modal.querySelectorAll('.carousel-slide');
+      const dots = modal.querySelectorAll('.carousel-dot');
+
+      if (!carouselState[modalId]) carouselState[modalId] = 0;
+
+      carouselState[modalId] = (carouselState[modalId] + direction + slides.length) % slides.length;
+
+      track.style.transform = `translateX(-${carouselState[modalId] * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === carouselState[modalId]));
+    }
   </script>
 </body>
 </html>
