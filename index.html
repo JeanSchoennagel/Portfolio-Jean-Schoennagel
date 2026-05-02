@@ -45,6 +45,7 @@
         --text-lg:   clamp(1rem,    2.2vw, 1.3rem);
         --text-xl:   clamp(1.2rem,  2.8vw, 1.6rem);
         --text-2xl:  clamp(1.6rem,  3.5vw, 2rem);
+        --text-3xl:  clamp(2.1rem,  4.6vw, 2.9rem);
         --text-h2:   clamp(2rem,    5vw,   4.5rem);
         --text-h1:   clamp(2.5rem,  8vw,   8rem);
       }
@@ -187,13 +188,12 @@
         right: -0vw; bottom: -4vh;
         font-family: 'DM Serif Display', serif;
         font-size: clamp(80px, 15vw, 240px);
-        color: var(--bg);
-        -webkit-text-stroke: 3px #c8401aa5;
+        color: var(--accent);
         line-height: 1;
       }
       .big-bg:hover {
-        color: var(--accent);
-        -webkit-text-stroke: 0px;
+        color: var(--bg);
+        -webkit-text-stroke: 3px #c8401aa5;
       }
 
       /* ─── Section titles ─── */
@@ -447,7 +447,7 @@
       /* ─── CV Block ─── */
       .cv-block {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
         gap: 4rem;
         padding: 3rem 0;
@@ -474,16 +474,37 @@
       }
       .cv-dl-btn {
         display: inline-flex; align-items: center; gap: 0.8rem;
+        justify-self: center;
         padding: 0.8rem 1.6rem;
         border: 1px solid var(--line);
         color: var(--muted); font-family: 'DM Mono', monospace;
-        font-size: var(--text-sm); letter-spacing: 0.12em; text-transform: uppercase;
+        font-size: var(--text-md); letter-spacing: 0.12em; text-transform: uppercase;
         text-decoration: none;
         transition: color 0.2s, border-color 0.2s, gap 0.2s;
         white-space: nowrap;
       }
       .cv-dl-btn:hover { color: var(--accent); border-color: var(--accent); gap: 1.2rem; }
-      .cv-dl-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+      .cv-dl-btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+      /*BOUTON TELECHARGEMENT MODALE*/
+        .modale-dl-btn {
+          display: block;
+          width: fit-content;
+          margin: 1.2rem auto 0;
+          padding: 0.8rem 1.6rem;
+          border: 1px solid var(--line);
+          color: var(--muted); 
+          font-family: 'DM Mono', monospace;
+          font-size: var(--text-sm); 
+          letter-spacing: 0.12em; 
+          text-transform: uppercase;
+          text-decoration: none;
+          transition: color 0.2s, border-color 0.2s;
+          white-space: nowrap;
+        }
+        .modale-dl-btn:hover { color: var(--accent); border-color: var(--accent); gap: 1.2rem; }
+        .modale-dl-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
 
       /* ─── Expérience ─── */
       .xp-item {
@@ -588,20 +609,25 @@
       .modal.open { display: flex; }
       .modal-inner {
         position: relative; max-width: 760px; width: 90%;
-        max-height: 85vh; overflow-y: auto;
+        max-height: 95vh; overflow-y: auto;
         background: var(--bg); padding: 2.5rem;
       }
       .modal-close {
-        position: absolute; top: -2.2rem; right: 0;
-        background: none; border: none; color: var(--bg);
-        font-family: 'DM Mono', monospace;
-        font-size: var(--text-sm);
-        letter-spacing: 0.12em; text-transform: uppercase; cursor: none;
-        transition: color 0.2s;
+        position: absolute; top: 2.5rem; right: 2.5rem;
+        background: none; border: none; color: var(--muted);
+        font-family: 'DM Mono', monospace; font-size: var(--text-sm);
+        letter-spacing: 0.12em; text-transform: uppercase;
+        cursor: pointer; transition: color 0.2s; z-index: 10; 
       }
       .modal-close:hover { color: var(--accent); }
       .modal-num { font-size: var(--text-sm); color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
       .modal-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 4vw, 2.5rem); margin-bottom: 0.5rem; }
+        .modal-arrow { 
+          position: absolute; top: 3.8rem; right: 17.4rem;
+          color: var(--accent); font-family: 'DM Mono'; 
+          font-size: var(--text-3xl) ;
+          cursor: pointer; transition: color 0.2s; z-index: 10; 
+        }
       .modal-tags { font-size: var(--text-sm); color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1.5rem; }
       .modal-media { width: 100%; display: block; max-height: 420px; object-fit: contain; }
       .modal-desc { font-size: var(--text-base); color: var(--muted); margin-top: 1.2rem; line-height: 1.8; }
@@ -673,7 +699,7 @@
 
         .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
 
-        .modal-inner { max-height: 90vh; padding: 1.5rem; width: 95%; }
+        .modal-inner { max-height: 90vh; padding: 1.5rem; width: 95%; position: relative;}
 
         footer { flex-direction: column; gap: 0.3rem; text-align: center; }
       }
@@ -704,7 +730,8 @@
         <div>
           <p class="hero-label">Communicant multilingue · Designer · Créateur web</p>
           <h1>Gestion de projets<br>web <em>multilingues.</em></h1>
-          <p class="hero-sub">Diplômé d'une Licence d'Anglais et actuellement en Master Communication Web Multilingue à l'Université de Strasbourg, je recherche une Alternance afin de vous aider à conçevoir et développer des expériences numériques adaptées à vos besoins.</p>
+          <p class="hero-sub"> Polyvalent, curieux et passionné par le numérique et l'organisation de projets,
+             je suis actuellement à la recherche d'une alternance en communication digitale et développement web.</p>
         </div>
         <img src="./moi.jpg" alt="Jean Schoennagel" class="hero-photo">
       </div>
@@ -781,6 +808,7 @@
       <button class="modal-close" onclick="closeModal('modal-001')">Fermer ✕</button>
       <div class="modal-num">001</div>
       <div class="modal-title">Refonte Café Bretelles</div>
+        <div class="modal-arrow">↓</div>
       <div class="modal-tags">Ergonomie · Design · WordPress · Localisation · 2026</div>
       <video controls class="modal-media" playsinline><source src="./maquette-cafe-bretelelles.mp4" type="video/mp4"></video>
             <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
@@ -798,12 +826,11 @@
       <div class="modal-title">Publicité Elsass Cola</div>
       <div class="modal-tags">Communication . Design . Stratégie marketing · 2026</div>
       <img src="./Studio_A67.pdf" class="modal-media" alt="Publicité Elsass Cola"> 
+      <a href="Strategie_Elsass_Cola.pdf" download class="modale-dl-btn">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Télécharger la presentation 
+      </a>
       <p class="modal-desc">Projet personnel de stratégie de communication vidéo pour Elsass Cola, marque régionale alsacienne.</p><p class="modal-desc"> Conception d'un concept créatif ancré dans l'identité locale, scénarisation et présentation d'une stratégie de diffusion adaptée aux réseaux sociaux.</p>
-        <a href="Strategie_Elsass_Cola.pdf" download class="cv-dl-btn">
-          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-          Télécharger la presentation 
-        </a>
-      <a href="↗"></a>
     </div>
   </div>
 
@@ -1157,8 +1184,8 @@
     <div class="contact-grid">
       <div>
         <h2>Travaillons<br>ensemble.</h2>
-        <p class="contact-desc">Polyvalent, curieux et passionné par le numérique et l'organisation de projets,
-             je suis actuellement à la recherche d'une alternance en communication et développement web. <p class="orange"> N'hésitez pas à me contacter!</p>
+        <p class="contact-desc">Diplômé d'une Licence d'Anglais et actuellement en Master Communication Web Multilingue,
+           je recherche une Alternance afin de vous aider à conçevoir des expériences numériques humaines et adaptées à vos besoins.<p class="orange"> N'hésitez pas à me contacter!</p>
       </div>
       <div>
         <a href="mailto:votre@email.com" class="contact-email">schoennagelj@gmail.com</a>
