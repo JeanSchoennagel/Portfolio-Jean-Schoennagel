@@ -301,7 +301,7 @@
       }
       .proj-title {
         font-family: 'DM Serif Display', serif;
-        font-size: clamp(1rem, 2.5vw, 2rem);
+        font-size: var(--text-xl);
       }
       .proj-tags {
         display: inline-flex;
@@ -450,7 +450,7 @@
         grid-template-columns: 1fr 1fr;
         align-items: center;
         gap: 4rem;
-        padding: 3rem 0;
+        padding: 1.5rem 0;
         /*
         border-top: 1px solid var(--line);
         border-bottom: 1px solid var(--line);
@@ -465,7 +465,7 @@
       }
       .cv-block-title {
         font-family: 'DM Serif Display', serif;
-        font-size: clamp(1.6rem, 4vw, 3.5rem);
+        font-size: var(--text-2xl);
         line-height: 1;
       }
       .cv-block-title em {
@@ -547,7 +547,7 @@
       .orange { color: var(--accent); max-width: 36ch; font-size: var(--text-base); }
       .contact-email {
         font-family: 'DM Serif Display', serif;
-        font-size: clamp(1.2rem, 3vw, 2.5rem);
+        font-size: var(--text-2xl);
         color: var(--accent);
         text-decoration: none;
         display: block;
@@ -603,7 +603,7 @@
       /* ─── Modales ─── */
       .modal {
         display: none; position: fixed; inset: 0; z-index: 1000;
-        background: rgba(26,23,20,0.88); backdrop-filter: blur(8px);
+        background: rgba(87, 79, 71, 0.88); backdrop-filter: blur(8px);
         align-items: center; justify-content: center;
       }
       .modal.open { display: flex; }
@@ -621,18 +621,20 @@
       }
       .modal-close:hover { color: var(--accent); }
       .modal-num { font-size: var(--text-sm); color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
-      .modal-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.3rem, 4vw, 2.5rem); margin-bottom: 0.5rem; }
-        .modal-arrow { 
+      .modal-title { font-family: 'DM Serif Display', serif;
+       font-size: var(--text-2xl); margin-bottom: 0.5rem; 
+      }
+        /*.modal-arrow { 
           position: absolute; top: 3.8rem; right: 17.4rem;
           color: var(--accent); font-family: 'DM Mono'; 
           font-size: var(--text-3xl) ;
-          cursor: pointer; transition: color 0.2s; z-index: 10; 
-        }
+          cursor: pointer; transition: color 0.2s; z-index: 10;
+        }*/
       .modal-tags { font-size: var(--text-sm); color: var(--muted); letter-spacing: 0.08em; margin-bottom: 1.5rem; }
       .modal-media { width: 100%; display: block; max-height: 420px; object-fit: contain; }
-      .modal-desc { font-size: var(--text-base); color: var(--muted); margin-top: 1.2rem; line-height: 1.8; }
+      .modal-desc { font-size: var(--text-base); color: rgb(79, 75, 75); margin-top: 1.2rem; line-height: 1.8; }
 
-      /* ─── Responsive — layout uniquement ─── */
+      /* ─── Responsive Mobile — layout uniquement ─── */
       @media (max-width: 768px) {
         nav { padding: 10px 1.5rem; }
         nav ul { display: none; }
@@ -661,19 +663,24 @@
           grid-template-columns: 1fr;
           justify-items: center;
           text-align: center;
-          gap: 0;
           min-height: unset;
+          gap: 0.5rem;
         }
         .hero-photo {
-          width: 160px; height: 160px;
+          width: 185px; height: 185px;
           order: -1;
           border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
           object-fit: cover;
-          margin: 0 auto 1rem auto;
+          margin: 0 auto 0.3rem auto;
         }
         .hero-label { text-align: center; word-break: break-word; margin-bottom: 1rem; }
         .hero-sub { text-align: center; max-width: 100%; margin-top: 1rem; margin-bottom: 1.5rem; }
-        .big-bg { display: none; }
+        .big-bg { 
+          display: block;
+          font-size: clamp(40px, 20vw, 80px); /* réduit pour mobile */
+          bottom: 0;
+          right: 0;
+        }
         .hero-scroll { display: none; }
 
         h2 { margin-bottom: 1.8rem; }
@@ -688,6 +695,8 @@
         .proj-arrow { display: none; }
 
         .engage-arrow { display: none; }
+
+        /*.modal-arrow { position: static; display: block; text-align: center; margin-top: 1rem; }*/
 
         .xp-item { grid-template-columns: 1fr; gap: 0.2rem; }
         .xp-erasmus { grid-template-columns: 1fr; padding-left: 0.8rem; }
@@ -808,7 +817,7 @@
       <button class="modal-close" onclick="closeModal('modal-001')">Fermer ✕</button>
       <div class="modal-num">001</div>
       <div class="modal-title">Refonte Café Bretelles</div>
-        <div class="modal-arrow">↓</div>
+        <!--<div class="modal-arrow">↓</div>-->
       <div class="modal-tags">Ergonomie · Design · WordPress · Localisation · 2026</div>
       <video controls class="modal-media" playsinline><source src="./maquette-cafe-bretelelles.mp4" type="video/mp4"></video>
             <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
@@ -887,8 +896,8 @@
       <div class="modal-title">Communication digitale Trok</div>
       <div class="modal-tags">TROK · Communication · Création de contenu · Stratégie vidéo · 2026</div>
       <img src="./trok.jpg" class="modal-media" alt="Communication de l'App TROK"> 
-      <p class="modal-desc">Création de contenus vidéo pour les réseaux sociaux de l'application Trok et élaboration d'une stratégie digitale visant à accroître la visibilité de l'app sur les réseaux.</p>
       <a href="https://trok-app.com" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir l'app Web ↗</a>
+      <p class="modal-desc">Création de contenus vidéo pour les réseaux sociaux de l'application Trok et élaboration d'une stratégie digitale visant à accroître la visibilité de l'app sur les réseaux.</p>
     </div>
   </div>
 
@@ -1165,7 +1174,7 @@
      <section id="cv">
       <p class="section-num">06 — Curriculum Vitæ</p>
       -->
-      <h2 style="margin-top:3.5rem;">Mon CV<br>complet.</h2>
+      <h2 style="margin-top:1.5rem;">Mon CV<br>complet.</h2>
       <div class="cv-block">
         <div>
           <div class="cv-block-label">Disponible en téléchargement</div>
