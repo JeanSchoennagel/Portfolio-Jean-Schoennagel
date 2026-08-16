@@ -530,11 +530,6 @@
         padding: 0.25rem 0.7rem;
         border-radius: 20px;
       }
-      .xp-erasmus {
-        display: grid; grid-template-columns: 180px 1fr; gap: 2rem;
-        padding-left: 5rem;
-        border-top: 1px solid var(--line);
-      }
 
       /* ─── Contact ─── */
       .contact-grid {
@@ -543,7 +538,7 @@
         gap: 4rem;
         align-items: center;
       }
-      .contact-desc { color: var(--muted); max-width: 36ch; font-size: var(--text-base); }
+      .contact-desc { color: var(--muted); max-width: 50ch; font-size: var(--text-base); }
       .orange { color: var(--accent); max-width: 36ch; font-size: var(--text-base); }
       .contact-email {
         font-family: 'DM Serif Display', serif;
@@ -552,7 +547,7 @@
         text-decoration: none;
         display: block;
         margin-bottom: 3rem;
-        border-bottom: 2px solid var(--ink);
+        border-bottom: 2px solid var(--line);
         padding-bottom: 0.5rem;
         transition: color 0.2s, border-color 0.2s;
       }
@@ -699,7 +694,6 @@
         /*.modal-arrow { position: static; display: block; text-align: center; margin-top: 1rem; }*/
 
         .xp-item { grid-template-columns: 1fr; gap: 0.2rem; }
-        .xp-erasmus { grid-template-columns: 1fr; padding-left: 0.8rem; }
         .xp-date { unicode-bidi: plaintext; }
         .xp-company { white-space: normal; overflow-wrap: break-word; word-break: break-word; }
         .xp-role { overflow-wrap: break-word; word-break: break-word; }
@@ -808,6 +802,15 @@
       <span class="proj-arrow">↗</span>
     </div>
 
+    <div class="project-item" onclick="openModal('modal-006')">
+      <span class="proj-num">006</span>
+      <div>
+        <div class="proj-title">Strategie digitale Tino</div>
+        <div class="proj-tags"><span>TROK</span><span>Marketing digitale</span><span>Création de contenu</span><span>Stratégie vidéo</span></div>
+      </div>
+      <span class="proj-arrow">↗</span>
+    </div>
+
   </div>
 </section>
 
@@ -820,11 +823,13 @@
         <!--<div class="modal-arrow">↓</div>-->
       <div class="modal-tags">Ergonomie · Design · WordPress · Localisation · 2026</div>
       <video controls class="modal-media" playsinline><source src="./maquette-cafe-bretelelles.mp4" type="video/mp4"></video>
-            <a href="https://www.linkedin.com/posts/jean-schoennagel_aujourdhui-jai-la-chance-de-vous-pr%C3%A9senter-activity-7425490406869467136-3hmq" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur LinkedIn ↗</a>
-        <p class="modal-desc"> Le site existant souffrait d'une navigation confuse et d'une absence totale de version multilingue, limitant la visibilité de l'établissement auprès d'une clientèle internationale.</p><p class="modal-desc">Avec mon équipe nous avons pris en charge la refonte complète : audit UX, conception des maquettes sur Figma, intégration sous WordPress et localisation en anglais et allemand.</p>
-      <!--<a href="https://www.cafebretelles.fr" target="_blank" rel="noopener" class="modal-link">
-        Voir le site en ligne ↗
-      </a>-->
+      <a href="https://www.cafe-bretelle-strasbourg.fr" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">
+        Voir le site en ligne ↗ </a>
+        <p class="modal-desc"> Le site existant souffrait d'une navigation confuse et d'une absence totale de version multilingue, limitant la visibilité de l'établissement auprès d'une clientèle internationale.</p>
+        <p class="modal-desc">Avec mon équipe nous avons pris en charge la refonte complète : audit UX, conception des maquettes sur Figma, intégration sous WordPress et localisation en anglais et allemand.</p>
+        <p class="modal-desc">Notre objectif était clair : concevoir un site plus moderne, plus intuitif et davantage en phase avec l’identité du café.</p>
+      <a href="https://lnkd.in/p/e9wcGaCR" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">
+        Voir sur LinkedIn ↗</a>
     </div>
   </div>
 
@@ -839,7 +844,8 @@
         <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
         Télécharger la presentation 
       </a>
-      <p class="modal-desc">Projet personnel de stratégie de communication vidéo pour Elsass Cola, marque régionale alsacienne.</p><p class="modal-desc"> Conception d'un concept créatif ancré dans l'identité locale, scénarisation et présentation d'une stratégie de diffusion adaptée aux réseaux sociaux.</p>
+      <p class="modal-desc">Projet personnel de stratégie de communication vidéo pour Elsass Cola, marque régionale alsacienne.</p>
+      <p class="modal-desc"> Conception d'un concept créatif ancré dans l'identité locale, scénarisation et présentation d'une stratégie de diffusion adaptée aux réseaux sociaux.</p>
     </div>
   </div>
 
@@ -898,6 +904,20 @@
       <img src="./trok.jpg" class="modal-media" alt="Communication de l'App TROK"> 
       <a href="https://trok-app.com" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir l'app Web ↗</a>
       <p class="modal-desc">Création de contenus vidéo pour les réseaux sociaux de l'application Trok et élaboration d'une stratégie digitale visant à accroître la visibilité de l'app sur les réseaux.</p>
+    </div>
+  </div>
+
+  <div id="modal-006" class="modal" onclick="closeOnBackdrop(event, 'modal-006')">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal('modal-006')">Fermer ✕</button>
+      <div class="modal-num">006</div>
+      <div class="modal-title">Strategie digitale Tino</div>
+      <div class="modal-tags">Marketing digital · Création de contenu · Stratégie vidéo · 2026</div>
+      <img src="./tinoland.jpeg" class="modal-media" alt="Communication de l'illustrateur Tinoland"> 
+      <a href="https://www.linkedin.com/posts/jean-schoennagel_communicationdigitale-raezseauxsociaux-craezationdecontenu-activity-7471964483549110273-V7Rj?utm_source=share&utm_medium=member_desktop&rcm=ACoAAExRpJ4By3eeeKgAjXwydXC5otnQI4VPHow" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.2rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom: 1px solid var(--accent); padding-bottom:0.2rem;">Voir sur Linkedin ↗</a>
+      <p class="modal-desc">Durant plusieurs mois, nous avons accompagné l’illustrateur et designer graphique Tinoland dans le développement de sa stratégie digitale et l’animation de ses réseaux sociaux.</p>
+      <p class="modal-desc">Dans ce cadre, nous avons eu l’opportunité de réaliser plusieurs vidéos en collaboration avec l’Association ADECAWEB afin de mettre en lumière son travail et ses projets à venir.</p>
+      <p class="modal-desc">Cette collaboration nous a permis de mobiliser nos compétences en communication digitale afin de produire des contenus audiovisuels authentiques, reflétant l’univers de Tino.</p>
     </div>
   </div>
 
@@ -1140,11 +1160,12 @@
           <span class="xp-tag">CMS</span><span class="xp-tag">Traduction</span><span class="xp-tag">Localisation</span>-->
         </div>
       </div>
+    </div>
 
-    <div class="xp-erasmus">
-      <div class="xp-date">01/2024 - 07/2024<span class="xp-loc">University College Cork Ireland</span></div>
+    <div class="xp-item">
+      <div class="xp-date">01/2024 - 07/2024<span class="xp-loc">University College Cork</span></div>
       <div>
-        <div class="xp-role">Erasmus</div>
+        <div class="xp-role">Erasmus en Irlande</div>
         <div class="xp-company">English Language, Literature & Culture</div>
         <div class="xp-tags">
           <!--<span class="xp-tag">Ergonomie</span><span class="xp-tag">Design</span>
